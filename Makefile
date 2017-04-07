@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -MMD
 EXEC = flood
-OBJECTS = main.o cell.o grid.o textdisplay.o
+OBJECTS = main.o cell.o grid.o textdisplay.o player.o
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}

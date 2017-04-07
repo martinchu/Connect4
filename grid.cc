@@ -38,12 +38,9 @@ void Grid::init(){
   for(int q=0;q<grow;q++){
     theGrid[q]=new Cell[gcol];
   }
-/*
-  td= new TextDisplay(n);
-
-  gridSize=n;
-  for(int row=0;row<gridSize;row++){
-    for(int col=0;col<gridSize;col++){
+  td= new TextDisplay(grow,gcol);
+  for(int row=0;row<grow;row++){
+    for(int col=0;col<gcol;col++){
       if(row>0){
         theGrid[row][col].addNeighbour(&theGrid[row-1][col]);
       }
@@ -60,7 +57,7 @@ void Grid::init(){
       theGrid[row][col].setCoords(row,col);
     }
   }
-*/
+
 }
   // Sets up an n x n grid.  Clears old grid, if necessary.
 void Grid::change(const int & state){
