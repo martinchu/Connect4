@@ -71,8 +71,7 @@ int main(){
 		}
 		else checkInput = false;
 	}
-	Human h1;
-	Human h2;
+	Human h1,h2;
 	AI ai;
 	Player * p1 = &h1;
 	Player * p2;
@@ -85,6 +84,10 @@ int main(){
 
 	if(mtest>=100){
 		cout<<"going into while loop"<<endl;
+		cout<<"check Player 1: "<<endl;
+		p1->checkHuman();
+		cout<<"check Player 2: "<<endl;
+		p2->checkHuman();
 	}
 	while(1){
 		if(gaming==true){

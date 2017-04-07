@@ -34,17 +34,64 @@ void TextDisplay::notify(int r, int c, char ch){
 	theDisplay[r][c]=ch;
 	colourCount[ch-'0']++;
 }
-bool TextDisplay::isFilled(){
-	char temp= theDisplay[0][0];
+char TextDisplay::isFilled(){
 	for(int i=0;i<rowSize;i++){
 		for(int j=0;j<colSize;j++){
 			if(ttest>=1)cout<<theDisplay[i][j]<<endl;
-			if(theDisplay[i][j]!=temp){
-				return false;
+			// Check for Horizontal
+			if(j <= colSize-4){//Check the left
+				if(theDisplay[i][j]==theDisplay[i][j+1]&&theDisplay[i][j]==theDisplay[i][j+2]&&theDisplay[i][j]==theDisplay[i][j+3]){
+					return theDisplay[i][j];
+				}
 			}
+			else if(j >= 3){//Check the Right
+				if(theDisplay[i][j]==theDisplay[i][j-1]&&theDisplay[i][j]==theDisplay[i][j-2]&&theDisplay[i][j]==theDisplay[i][j-3]){
+					return theDisplay[i][j];
+				}
+			}
+			// Check for Vertical
+			if(i <= rowSize-4){//Check the Up
+				if(theDisplay[i][j]==theDisplay[i+1][j]&&theDisplay[i][j]==theDisplay[i+2][j]&&theDisplay[i][j]==theDisplay[i+3][j]){
+					return theDisplay[i][j];
+				}
+			}
+			else if(i >= 3){//Check the down
+				if(theDisplay[i][j]==theDisplay[i-1][j]&&theDisplay[i][j]==theDisplay[i-2][j]&&theDisplay[i][j]==theDisplay[i-3][j]){
+					return theDisplay[i][j];
+				}
+			}
+			// Check for Diagonal
+			if(j <= colSize-4 && i <= rowSize-4){
+				if(theDisplay[i][j]==theDisplay[i+1][j+1]&&theDisplay[i][j]==theDisplay[i+2][j+2]&&theDisplay[i][j]==theDisplay[i+3][j+3]){
+					return theDisplay[i][j];
+				}
+				/*
+				X 0 0 0
+				0 x 0 0
+				0 0 x 0
+				0 0 0 x
+				*/
+			}
+			if(j <= colSize-4 && i >= 3){
+				if(theDisplay[i][j]==theDisplay[i-1][j+1]&&theDisplay[i][j]==theDisplay[i-2][j+2]&&theDisplay[i][j]==theDisplay[i-3][j+3]){
+					return theDisplay[i][j];
+				}
+			}
+
+			if(j >= 3 && i <= rowSize-4){
+				if(theDisplay[i][j]==theDisplay[i+1][j-1]&&theDisplay[i][j]==theDisplay[i+2][j-2]&&theDisplay[i][j]==theDisplay[i+3][j-3]){
+					return theDisplay[i][j];
+				}
+			}
+			if(j >= 3 && i >= 3){
+				if(theDisplay[i][j]==theDisplay[i-1][j-1]&&theDisplay[i][j]==theDisplay[i-2][j-2]&&theDisplay[i][j]==theDisplay[i-3][j-3]){
+					return theDisplay[i][j];
+				}
+			}
+
 		}
 	}
-	return true;
+	return 'F';
 }
 TextDisplay::~TextDisplay(){
 	for(int i=0;i<rowSize;i++){

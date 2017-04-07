@@ -9,19 +9,16 @@ void Grid::clearGrid(){
   if(gtest>=10){
     cout<<"in clearGrid"<<endl;
   }
-  for(int i=0;i<gridSize;i++){
-    for(int j=0;j<gridSize;j++){
+  for(int i=0;i<rowSize;i++){
+    for(int j=0;j<colSize;j++){
       delete &theGrid[i][j];
     }
     delete []theGrid[i];
   }
   delete []theGrid;
   delete td;
-  td=0;
-  gridSize=0;
-  theGrid=0;
 }
-Grid::Grid():theGrid(0),gridSize(0),td(0){}
+Grid::Grid():theGrid(0),rowSize(0),colSize(0),td(0){}
 Grid::~Grid(){
   this->clearGrid();
 }
@@ -47,10 +44,10 @@ void Grid::init(){
       if(col>0){
         theGrid[row][col].addNeighbour(&theGrid[row][col-1]);
       }
-      if(row<(gridSize-1)){
+      if(row<(rowSize-1)){
         theGrid[row][col].addNeighbour(&theGrid[row+1][col]);
       }
-      if(col<(gridSize-1)){
+      if(col<(colSize-1)){
         theGrid[row][col].addNeighbour(&theGrid[row][col+1]);
       }
       theGrid[row][col].setDisplay(td);

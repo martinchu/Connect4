@@ -7,7 +7,8 @@
 
 class Grid {
   Cell **theGrid;                   // The actual n x n grid.
-  int gridSize;                     // Size of the grid (n)
+  int rowSize;
+  int colSize;                   // Size of the grid (n)
   TextDisplay *td;                  // The text display.
   //Xwindow * theWindow;
 

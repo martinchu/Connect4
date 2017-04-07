@@ -14,7 +14,7 @@ class TextDisplay {
    * Whenever a Cell changes color, the corresponding color count should
    * be updated.
    */
-  unsigned int colourCount[5];
+  unsigned int colourCount[2];
 
  public:
   TextDisplay(int row, int col); //one arg constructor where the parameter is the gridSize
@@ -29,7 +29,7 @@ class TextDisplay {
 	* To check the win condition, the Grid calls the isFilled
 	* method which returns true if all cells are the same color
 	*/
-  bool isFilled();
+  char isFilled();
 
   ~TextDisplay(); //dtor
 

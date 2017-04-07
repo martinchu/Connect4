@@ -27,6 +27,7 @@ void Human::makeMove(){
 
 }
 void AI::checkHuman(){
+	cout<<"I am not HUMAN!!"<<endl;
 
 }
 void AI::makeMove(){
