@@ -33,20 +33,20 @@ void setGridColor(istream &in, Grid *g){
 			break;
 		}
 		in>>color;
-	if(r<gsize&&c<gsize){
-		g->init(r,c,color);
+		if(r<gsize&&c<gsize){
+			g->init(r,c,color);
+		}
 	}
+	if(mtest>=10){
+		cout<<"about to output grid"<<endl;
+	}
+	cout<<(*g);
 }
-if(mtest>=10){
-	cout<<"about to output grid"<<endl;
-}
-cout<<(*g);
-}
-void switchColor(Grid *g,int color){
-	g->change(color);
-	moves--;
-	cout<<*g;
-}
+// void switchColor(Grid *g,int color){
+// 	g->change(color);
+// 	moves--;
+// 	cout<<*g;
+// }
 int main(){
 	bool gaming=false;
 	Grid *g;
@@ -71,7 +71,17 @@ int main(){
 		}
 		else checkInput = false;
 	}
-
+	Human h1;
+	Human h2;
+	AI ai;
+	Player * p1 = &h1;
+	Player * p2;
+	if (mode ==1) {
+		p2 = &h2;
+	}
+	else{
+		p2 = &ai;
+	}
 
 	if(mtest>=100){
 		cout<<"going into while loop"<<endl;
@@ -136,7 +146,7 @@ int main(){
 		else if(s=="switch"){
 			int color;
 			cin>>color;
-			switchColor(g,color);
+			// switchColor(g,color);
 		}
 	}
 	delete g;
