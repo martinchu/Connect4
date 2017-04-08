@@ -8,17 +8,17 @@
 #include <string>
 
 using namespace std;
-
-int heuristic(Node node){
+int minimaxtest = 1000;
+int heuristic(Node *node){
   return 1;
 }
 
-int negamax(Node *node){
-  if ( depth == 0 || node.state->isWon()){
+int negamax(Node *node,int depth,int color){
+  if ( depth == 0 || node->state->isWon()){
     return color * heuristic(node);
   }
   int bestValue = INT_MIN;
-  for(int i=0; i<node.children.size();i++){
+  for(int i=0; i<node->children.size();i++){
     // v := −negamax(child, depth − 1, −color)
     // bestValue := max( bestValue, v )
 
@@ -26,38 +26,54 @@ int negamax(Node *node){
   return bestValue;
 }
 
-string switchTurn(string turn){
-  if(turn =="MAX") return "MIN";
-  return "MAX";
-}
-int alphabeta(Node *node, int alpha, int beta, bool MAXPLAYER){
-  if(node->children.size()==0){
+int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER){
+  if(minimaxtest>=100) cout<<"alpha: "<<alpha<<"\tbeta: "<<beta<<endl;
+  if(n->children.size()==0){
     // if it is a terminal node
-    return node->num;
+    cout<<"End state. value = "<<n->num<<endl;
+    return n->num;
   }
   else{
+    if(minimaxtest>=1000) {
+      cout<<"in level "<<n->height<<". It is ";
+      cout<<(MAXPLAYER?"MAX":"MIN");
+      cout<<"'s turn."<<endl;
+    }
     int v;
-    string nextTurn = switchTurn(turn);
     // if it is a parent node
     if(MAXPLAYER==true){
+      // Max Player's Turn
       v = INT_MIN;
       for(int i = 0; i< n->children.size();i++){
-        v = max(v, alphabeta(n->children[i], alpha, beta, FALSE));
+        v = max(v, alphabeta(n->children[i], alpha, beta, false));
         alpha = max(alpha, v);
-        if(beta<=alpha)break;
+        if(beta<=alpha){
+          if(minimaxtest>=100)cout<<"alpha is smaller than beta; no need to go through the following children"<<endl;
+          break;
+        }
       }
     }
     else{
+      // Min Player's Turn
       v = INT_MAX;
       for(int i = 0; i< n->children.size();i++){
-        v = min(v, alphabeta(n->children[i], alpha, beta, TRUE));
+        int temp = alphabeta(n->children[i], alpha, beta, true);
+        if(minimaxtest>=100)cout<<"temp: "<<temp<<"\tv: "<<v<<"\tbeta: "<<beta<<endl;
+        v = min(v, temp);
         beta = min(beta, v);
+        // if(minimaxtest>=100) cout<<"v: "<<v<<"\talpha: "<<alpha<<"\tbeta: "<<beta<<endl;
+        if(beta<=alpha){
+          if(minimaxtest>=100)cout<<"beta is smaller than alpha; no need to go through the following children"<<endl;
+          break;
+        }
       }
-      if(beta<=alpha)break;
+      cout<<"v: "<<v<<endl;
+
     }
 
     return v;
   }
+  return -1;
 }
 
 
@@ -72,9 +88,9 @@ int main(){
   subtree1.push_back(n3);
   Node *n4 = new Node(subtree1);
 
-  Node *n5 = new Node(0);
-  Node *n6 = new Node(18);
-  Node *n7 = new Node(15);
+  Node *n5 = new Node(-6);
+  Node *n6 = new Node(2);
+  Node *n7 = new Node(-4);
 
   vector <Node *> subtree2;
   subtree2.push_back(n5);
@@ -82,9 +98,9 @@ int main(){
   subtree2.push_back(n7);
   Node *n8 = new Node(subtree2);
 
-  Node *n9 = new Node(0);
-  Node *n10 = new Node(18);
-  Node *n11 = new Node(15);
+  Node *n9 = new Node(-15);
+  Node *n10 = new Node(10);
+  Node *n11 = new Node(1);
 
   vector <Node *> subtree3;
   subtree3.push_back(n9);
@@ -99,8 +115,8 @@ int main(){
 
   Node *n13 = new Node(tree);
 
-  cout<< *n13;
-  negamax(n13);
+  // cout<< *n13;
+  alphabeta(n13,INT_MIN,INT_MAX,true);
 
   delete n13;
 }

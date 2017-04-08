@@ -4,8 +4,10 @@
 
 using namespace std;
 
-Node::Node(int n):num(n){}
-Node::Node(std::vector<Node *> c):num(0),children(c){}
+Node::Node(int n):num(n),height(1){}
+Node::Node(std::vector<Node *> c):num(0),children(c){
+  height = c[0]->height +1;
+}
 ostream &operator<<(ostream&out, const Node &n){
   if(n.children.size()==0){
     cout<<"root node -> value: ";

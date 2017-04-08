@@ -10,6 +10,7 @@ class Node {
 public:
     Grid* state;
     int num;
+    int height;
     vector<Node *> children;
     Node(int num);
     Node(vector<Node *>c);
