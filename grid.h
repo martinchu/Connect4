@@ -4,12 +4,15 @@
 #include "cell.h"
 #include "textdisplay.h"
 #include "window.h"
+#include "player.h"
 
 class Grid {
   Cell **theGrid;                   // The actual n x n grid.
   int rowSize;
   int colSize;                   // Size of the grid (n)
   TextDisplay *td;                  // The text display.
+  Player* p1;
+  Player* p2;
   //Xwindow * theWindow;
 
   void clearGrid();                 // Frees the theGrid field.

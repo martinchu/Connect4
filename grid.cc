@@ -54,7 +54,6 @@ void Grid::init(){
       theGrid[row][col].setCoords(row,col);
     }
   }
-
 }
   // Sets up an n x n grid.  Clears old grid, if necessary.
 void Grid::change(const int & state){

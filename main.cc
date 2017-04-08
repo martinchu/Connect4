@@ -11,7 +11,7 @@ int moves=0;
 int mtest=100;
 int gsize=0;
 
-void setGridColor(istream &in, Grid *g){
+void setGrid(istream &in, Grid *g){
 	string s;
 	if(mtest>=50){
 		cout<<"in setGridColor"<<endl;
@@ -47,6 +47,9 @@ void setGridColor(istream &in, Grid *g){
 // 	moves--;
 // 	cout<<*g;
 // }
+void addChecker(Grid *g, int col){
+
+}
 int main(){
 	bool gaming=false;
 	Grid *g;
@@ -57,7 +60,7 @@ int main(){
 	cout<<"2: Play with PC"<<endl;
 	int mode;
 	bool checkInput = true;
-
+	g->init();
 	// Ask User to pick a mode
 	while(checkInput){
 		cin>>mode;
@@ -83,6 +86,7 @@ int main(){
 	}
 
 	if(mtest>=100){
+		cout<<*g;
 		cout<<"going into while loop"<<endl;
 		cout<<"check Player 1: "<<endl;
 		p1->checkHuman();
@@ -116,19 +120,11 @@ int main(){
 		if(cin.eof()){
 			break;
 		}
-		if(s=="new"){
-			if(g){
-			}
-			if(mtest>=20){
-				cout<<"init..."<<endl;
-			}
-			g->init();
-		}
 		else if(s=="include"){
 			string inf;
 			cin>>inf;
 			ifstream infile(inf.c_str());
-			setGridColor(infile,g);
+			setGrid(infile,g);
 		}
 		// else if(s=="init"){
 		// 	if(mtest>=20){

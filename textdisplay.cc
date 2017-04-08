@@ -108,8 +108,9 @@ ostream &operator<<(ostream &out, const TextDisplay &td){
 		cout<<"td: "<<&td<<endl;
 		cout<<"td.theDisplay: "<<td.theDisplay<<endl;
 	}
-
+	cout<<"column: 1 2 3 4 5 6 7"<<endl;
 	for(int r=0;r<td.rowSize;r++){
+		out<<"        ";
 		if(ttest>=10){
 			cout<<"r: "<<r<<endl;
 			// cout<<"gridSize: "<<td.gridSize<<endl;
@@ -118,7 +119,7 @@ ostream &operator<<(ostream &out, const TextDisplay &td){
 			if(ttest>=10){
 				cout<<"c: "<<c<<endl;
 			}
-			out<<td.theDisplay[r][c];
+			out<<td.theDisplay[r][c]<<" ";
 		}
 		out<<endl;
 	}

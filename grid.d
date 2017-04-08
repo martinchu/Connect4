@@ -1,1 +1,1 @@
-grid.o: grid.cc grid.h cell.h textdisplay.h window.h
+grid.o: grid.cc grid.h cell.h textdisplay.h window.h player.h
