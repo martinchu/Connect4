@@ -6,6 +6,8 @@
 #include "cell.h"
 #include "grid.h"
 #include "player.h"
+#include "node.h"
+
 using namespace std;
 int moves=0;
 int mtest=100;

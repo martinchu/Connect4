@@ -8,7 +8,7 @@
 #include <string>
 
 using namespace std;
-int minimaxtest = 1000;
+int minimaxtest = 0;
 int heuristic(Node *node){
   return 1;
 }
@@ -26,12 +26,17 @@ int negamax(Node *node,int depth,int color){
   return bestValue;
 }
 
-int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER){
+int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
   if(minimaxtest>=100) cout<<"alpha: "<<alpha<<"\tbeta: "<<beta<<endl;
-  if(n->children.size()==0){
+  if(n->children.size()==0||depth==0){
     // if it is a terminal node
-    cout<<"End state. value = "<<n->num<<endl;
-    return n->num;
+    if(n->children.size()==0){
+      cout<<"End state. value = "<<n->num<<endl;
+      return n->num;
+    }
+    else{
+      return heuristic(n);
+    }
   }
   else{
     if(minimaxtest>=1000) {
@@ -45,7 +50,7 @@ int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER){
       // Max Player's Turn
       v = INT_MIN;
       for(int i = 0; i< n->children.size();i++){
-        v = max(v, alphabeta(n->children[i], alpha, beta, false));
+        v = max(v, alphabeta(n->children[i], alpha, beta, false,depth-1));
         alpha = max(alpha, v);
         if(beta<=alpha){
           if(minimaxtest>=100)cout<<"alpha is smaller than beta; no need to go through the following children"<<endl;
@@ -57,7 +62,7 @@ int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER){
       // Min Player's Turn
       v = INT_MAX;
       for(int i = 0; i< n->children.size();i++){
-        int temp = alphabeta(n->children[i], alpha, beta, true);
+        int temp = alphabeta(n->children[i], alpha, beta, true,depth-1);
         if(minimaxtest>=100)cout<<"temp: "<<temp<<"\tv: "<<v<<"\tbeta: "<<beta<<endl;
         v = min(v, temp);
         beta = min(beta, v);
@@ -116,7 +121,7 @@ int main(){
   Node *n13 = new Node(tree);
 
   // cout<< *n13;
-  alphabeta(n13,INT_MIN,INT_MAX,true);
+  alphabeta(n13,INT_MIN,INT_MAX,true,2);
 
   delete n13;
 }
