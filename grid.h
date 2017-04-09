@@ -10,6 +10,7 @@ class Grid {
   Cell **theGrid;                   // The actual n x n grid.
   int rowSize;
   int colSize;                   // Size of the grid (n)
+  int checkers;
   TextDisplay *td;                  // The text display.
   Player* p1;
   Player* p2;
@@ -32,12 +33,14 @@ class Grid {
    * Cells change colors
    * Look through the textdisplay.h file for hints on how to do this
    */
-  bool isWon();
-
+  bool isFilled();
+  char getWinner();
+  void dropChecker(int targetcol,bool player1);
   void init();                 // Sets up an n x n grid.  Clears old grid, if necessary.
   void change(const int & state);  // Notify Cell (0,0) of the change to new state: state
-  void init(int r, int c, int state); //set the state for r,c to state
+  // void init(int r, int c, int state); //set the state for r,c to state
   friend std::ostream &operator<<(std::ostream &out, const Grid &g);
+  void printAddress();
 };
 
 #endif

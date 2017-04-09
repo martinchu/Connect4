@@ -8,21 +8,23 @@ protected:
   Grid *g;
 public:
   virtual void checkHuman() = 0; //Testing Purpose;
-  virtual void makeMove() = 0;
+  virtual void makeMove(bool p1) = 0;
 };
 class Human: public Player{
 public:
   void checkHuman();
-  void makeMove();
+  void makeMove(bool p1);
+  Human(Grid *grid);
 };
 class AI: public Player{
-  Node* lookAhead(Grid *g);
+  Node* lookAhead(int steps);
   int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth);
   int heuristic(Node* n);
+  int evalBoard(Node* n);
 public:
   void checkHuman();
-  void makeMove();
-
+  void makeMove(bool p1);
+  AI(Grid *g);
 };
 
 #endif

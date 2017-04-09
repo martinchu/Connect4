@@ -10,59 +10,21 @@
 
 using namespace std;
 int moves=0;
-int mtest=100;
+int mtest=0;
 int gsize=0;
+int memtest = 100;
 
-void setGrid(istream &in, Grid *g){
-	string s;
-	if(mtest>=50){
-		cout<<"in setGridColor"<<endl;
-	}
-	int r,c, color;
-	while(in>>r){
-		// if(in.eof()){
-		// 	break;
-		// }
-		if(mtest>=20){
-			cout<<"about to get line"<<endl;
-		}
-		// getline(in,s);
-		in>>c;
-		if(mtest>=20){
-			cout<<"done(/skipped?) getline"<<endl;
-		}
-		if(r==-1&&c==-1){
-			break;
-		}
-		in>>color;
-		if(r<gsize&&c<gsize){
-			g->init(r,c,color);
-		}
-	}
-	if(mtest>=10){
-		cout<<"about to output grid"<<endl;
-	}
-	cout<<(*g);
-}
-// void switchColor(Grid *g,int color){
-// 	g->change(color);
-// 	moves--;
-// 	cout<<*g;
-// }
-void addChecker(Grid *g, int col){
-
-}
 int main(){
-	bool gaming=false;
+	// bool gaming=false;
 	Grid *g;
 	string s;
 	g= new Grid();
+	g->init();
 	cout<<"Welcome to Connect4. Type 1 or 2 to choose your mode:"<<endl;
 	cout<<"1: Play with another Player"<<endl;
 	cout<<"2: Play with PC"<<endl;
 	int mode;
 	bool checkInput = true;
-	g->init();
 	// Ask User to pick a mode
 	while(checkInput){
 		cin>>mode;
@@ -76,15 +38,17 @@ int main(){
 		}
 		else checkInput = false;
 	}
-	Human h1,h2;
-	AI ai;
-	Player * p1 = &h1;
+	Human *h1 = new Human(g);
+	Human *h2 = new Human(g);
+
+	AI *ai = new AI(g);
+	Player * p1 = h1;
 	Player * p2;
 	if (mode ==1) {
-		p2 = &h2;
+		p2 = h2;
 	}
 	else{
-		p2 = &ai;
+		p2 = ai;
 	}
 
 	if(mtest>=100){
@@ -95,67 +59,33 @@ int main(){
 		cout<<"check Player 2: "<<endl;
 		p2->checkHuman();
 	}
-	while(1){
-		if(gaming==true){
-			if(g->isWon()==true){
-				cout<<"Won"<<endl;
-				break;
-			}
-			else if(moves==0 && g->isWon()==false){
-				cout<<"Lost"<<endl;
-				break;
-			}
-		}
-		if(!g){
-			if(mtest>=100){
-				cout<<"checked if g is null"<<endl;
-			}
-			if(g->isWon()==true){
-				if(mtest>=100){
-					cout<<"checking winning condition"<<endl;
-				}
-				cout<<"Won"<<endl;
-				break;
-			}
-		}
-		cin>>s;
-		if(cin.eof()){
-			break;
-		}
-		else if(s=="include"){
-			string inf;
-			cin>>inf;
-			ifstream infile(inf.c_str());
-			setGrid(infile,g);
-		}
-		// else if(s=="init"){
-		// 	if(mtest>=20){
-		// 		cout<<"initialization..."<<endl;
-		// 	}
-		// 	setGridColor(cin,g);
-		// }
-		// else if(s=="game"){
-		// 	if(mtest>=2){
-		// 		cout<<"moves: "<<moves<<endl;
-		// 	}
-		// 	cin>>moves;
-		// 	if(mtest>=2){
-		// 		cout<<"moves: "<<moves<<endl;
-		// 	}
-		// 	gaming=true;
-		// }
-		else if(s=="switch"){
-			int color;
-			cin>>color;
-			// switchColor(g,color);
-		}
+	// bool p1turn = true;
+	// while(true){
+	// 	cout<<"g->getWinner(): "<<g->getWinner()<<endl;
+	// 	if(g->getWinner()!='F'){
+	// 		// Find Winner
+	// 		cout<<"Player "<<g->getWinner()<<" wins!!!"<<endl;
+	// 		break;
+	// 	}
+	// 	else if(g->isFilled()==true){
+	// 		cout<<"This is a draw!"<<endl;
+	// 		break;
+	// 	}
+	// 	else{
+	// 		Player * p = (p1turn? p1: p2);
+	// 		if(p1turn) cout<<"It is Player 1's turn."<<endl;
+	// 		else cout<<"It is Player 2's turn."<<endl;
+	// 		p->makeMove(p1turn);
+	// 		cout<<*g;
+	// 		p1turn = !p1turn;
+	// 	}
+	// }
+	// g->printAddress();
+	if(memtest>=100){
+		cout<<"deleting grid"<<endl;
 	}
 	delete g;
+	delete h1;
+	delete h2;
+	delete ai;
 }
-
-/*void setNewGrid(){
-if(GridInstance){
-delete GridInstance;
-}
-GridInstance= new Grid()
-}*/

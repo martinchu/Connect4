@@ -3,6 +3,7 @@
 #include <vector>
 #include <climits>
 #include "player.h"
+#include "grid.h"
 #include "node.h"
 
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
 }
-void Human::makeMove(){
+void Human::makeMove(bool p1){
   int linenum;
   cout<<"Player, Please make move now."<<endl;
   cout<<"Please select the line you want to drop your token: ";
@@ -27,16 +28,22 @@ void Human::makeMove(){
 		}
 		else checkInput = false;
 	}
-
+  Player::g->dropChecker(linenum-1,p1);
+}
+Human::Human(Grid *grid){
+  Player::g = grid;
+}
+AI::AI(Grid* grid){
+  Player::g = grid;
 }
 void AI::checkHuman(){
 	cout<<"I am not HUMAN!!"<<endl;
 
 }
-void AI::makeMove(){
-
+int AI::evalBoard(Node *n){
+  
 }
-Node* AI::lookAhead(Grid *g){
+Node* AI::lookAhead(int steps){
   return 0;
 }
 int AI::heuristic(Node *node){
@@ -58,7 +65,7 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     if(MAXPLAYER==true){
       // Max Player's Turn
       v = INT_MIN;
-      for(int i = 0; i< n->children.size();i++){
+      for(unsigned int i = 0; i< n->children.size();i++){
         v = max(v, alphabeta(n->children[i], alpha, beta, false,depth-1));
         alpha = max(alpha, v);
         if(beta<=alpha)break;
@@ -67,7 +74,7 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     else{
       // Min Player's Turn
       v = INT_MAX;
-      for(int i = 0; i< n->children.size();i++){
+      for(unsigned int i = 0; i< n->children.size();i++){
         int temp = alphabeta(n->children[i], alpha, beta, true,depth-1);
         v = min(v, temp);
         beta = min(beta, v);
@@ -80,4 +87,9 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     return v;
   }
   return -1;
+}
+
+void AI::makeMove(bool p1){
+  Node *futureStates = lookAhead(3);//look 3 steps ahead
+  Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
 }

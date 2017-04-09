@@ -9,7 +9,7 @@ int numNeighbours;   //number of neighbors
 Cell *neighbours[maxNeighbours];   //pointers to neighbors
 int r, c;                   //co-ordinates of the cell
 TextDisplay * td;        //pointer to the text display*/
-int ctest=0;
+int ctest=100;
 Cell::Cell(){
   state=0;
   prevState=0;
@@ -58,7 +58,7 @@ void Cell::addNeighbour(Cell *neighbour){
   numNeighbours++;
 }
 /*
-* The following methods are provided as a hint towards implementing the notification 
+* The following methods are provided as a hint towards implementing the notification
 * You should try to use the methods with the given signatures.
 *
 * If you feel the need to change the *signature* of the method (not the name) you may
@@ -67,15 +67,16 @@ void Cell::addNeighbour(Cell *neighbour){
 /*
 * Intended to be called only by the grid class for changing the state of the 0 0 cell*/
 void Cell::notify(const int & change){
+  if(ctest>=100)cout<<"in Cell notify"<<endl;
   setState(change);
-  for(int i=0;i<numNeighbours;i++){
-    neighbours[i]->notify(getState(),prevState);
-  }
+  // for(int i=0;i<numNeighbours;i++){
+  //   neighbours[i]->notify(getState(),prevState);
+  // }
   notifyDisplay();
 }
 /*
 * Intended to be called by Cells to notify their neighbors
-* current: this cells current(new) state 
+* current: this cells current(new) state
 * previous: this cells past state
 */
 void Cell::notify(const int & current, const int & previous){

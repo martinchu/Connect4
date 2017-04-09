@@ -29,8 +29,8 @@ class TextDisplay {
 	* To check the win condition, the Grid calls the isFilled
 	* method which returns true if all cells are the same color
 	*/
-  char isFilled();
-
+  bool isFilled();
+  char getWinner();
   ~TextDisplay(); //dtor
 
   friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
