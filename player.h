@@ -9,12 +9,14 @@ protected:
 public:
   virtual void checkHuman() = 0; //Testing Purpose;
   virtual void makeMove(bool p1) = 0;
+  virtual ~Player();
 };
 class Human: public Player{
 public:
   void checkHuman();
   void makeMove(bool p1);
   Human(Grid *grid);
+  ~Human();
 };
 class AI: public Player{
   Node* lookAhead(int steps);
@@ -25,6 +27,7 @@ public:
   void checkHuman();
   void makeMove(bool p1);
   AI(Grid *g);
+  ~AI();
 };
 
 #endif

@@ -14,6 +14,22 @@ int mtest=0;
 int gsize=0;
 int memtest = 100;
 
+void setGrid(istream &in, Grid *g){
+	if(mtest>=50)cout<<"in setGridColor"<<endl;
+	int r,c, color;
+	while(in>>r){
+		if(mtest>=20)cout<<"about to get line"<<endl;
+		in>>c;
+		if(mtest>=20)cout<<"done(/skipped?) getline"<<endl;
+		if(r==-1&&c==-1)break;
+		in>>color;
+		if(r<gsize&&c<gsize)g->init(r,c,color);
+	}
+	if(mtest>=10)cout<<"about to output grid"<<endl;
+	cout<<(*g);
+}
+
+
 int main(){
 	// bool gaming=false;
 	Grid *g;
@@ -58,6 +74,15 @@ int main(){
 		p1->checkHuman();
 		cout<<"check Player 2: "<<endl;
 		p2->checkHuman();
+	}
+	cout<<"Load Game?(Y/N)";
+	cin>>s;
+	if(s =="Y"||s=="y"){
+		cout<<"please insert file name."<<endl;
+		string inf;
+		cin>>inf;
+		ifstream infile(inf.c_str());
+		setGrid(infile,g);
 	}
 	// bool p1turn = true;
 	// while(true){

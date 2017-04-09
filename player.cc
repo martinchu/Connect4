@@ -50,7 +50,8 @@ int AI::evalBoard(Node *n){
 Node* AI::lookAhead(int steps){
   return 0;
 }
-int AI::heuristic(Node *node){
+int AI::heuristic(Node *n){
+  if(evalBoard(n)!=50) return evalBoard(n);
   return 1;
 }
 int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
@@ -64,7 +65,7 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     }
   }
   else{
-    int v;
+    // int v;
     // if it is a parent node
     if(MAXPLAYER==true){
       // Max Player's Turn
@@ -87,8 +88,7 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
       cout<<"n->num: "<<n->num<<endl;
 
     }
-
-    return v;
+    return n->num;
   }
   return -1;
 }
@@ -96,4 +96,14 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
 void AI::makeMove(bool p1){
   Node *futureStates = lookAhead(3);//look 3 steps ahead
   Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
+}
+
+AI::~AI(){
+
+}
+Human::~Human(){
+
+}
+Player::~Player(){
+
 }

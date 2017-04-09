@@ -7,32 +7,13 @@ class TextDisplay {
   char **theDisplay;          //the n x n display
   const int rowSize;          //number of rows
   const int colSize;          //number of columns
-
-  /*
-   * The following field helps track how the game as progressed
-   * The field should track how much Cells of the grid are of each color
-   * Whenever a Cell changes color, the corresponding color count should
-   * be updated.
-   */
   unsigned int colourCount[2];
-
  public:
   TextDisplay(int row, int col); //one arg constructor where the parameter is the gridSize
-
-  /*
-   * The TextDisplay is an observer of each Cell. Cells call notify to
-   * update the (r,c) location to be ch
-   */
   void notify(int r, int c, char ch);
-
-   /*
-	* To check the win condition, the Grid calls the isFilled
-	* method which returns true if all cells are the same color
-	*/
   bool isFilled();
   char getWinner();
-  ~TextDisplay(); //dtor
-
+  ~TextDisplay(); //decontructor
   friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };
 
