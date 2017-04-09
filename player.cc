@@ -76,7 +76,8 @@ int AI::findPotentialWin(Node* n){
   //      4   1 0 1 1 ...            4   0 0 0 0 ...
   //      5   2 0 1 2 ...            5   0 0 0 0 ...
   //      6   1 0 2 1 ...            6   1 0 1 1 ...
-  //  EDIT: might adjust later to enhance performance
+  //     => inaRow[0]+=4             =>inaRow[0]+=6;
+
   int inARow[4];
   int inARowOpponent[4];
   int rowSize = g->getrowSize();
@@ -84,30 +85,41 @@ int AI::findPotentialWin(Node* n){
   for(int i = 0; i< rowSize;i++){
     for(int j = 0; j< colSize;j++){
       if(td->getCord(i,j)=='0'){
-        if(j <= colSize-4){//Check the left
-          if(td->getCord(i,j)==td->getCord(i,j+1)&&td->getCord(i,j)==td->getCord(i,j+2)&&td->getCord(i,j)==td->getCord(i,j+3)){
-            return td->getCord(i,j);
+        // There is empty spot for a checker
+        if(j <= colSize-4){//Check the right
+          if(td->getCord(i,j+1)==td->getCord(i,j+2)&&td->getCord(i,j+2)==td->getCord(i,j+3)){
+            intARow[0]+=i;
           }
+          // x 0 x x
+          if(j>0&&td->getCord(i,j-1)==td->getCord(i,j+2)&&td->getCord(i,j+2)==td->getCord(i,j+3)){
+            intARow[0]+=i;
+          }
+          // x x 0 x
+          if(j>1&&td->getCord(i,j-1)==td->getCord(i,j-2)&&td->getCord(i,j-1)==td->getCord(i,j+1)){
+            intARow[0]+=i;
+          }
+          
         }
-        else if(j >= 3){//Check the Right
-          if(td->getCord(i,j)==td->getCord(i,j-1)&&td->getCord(i,j)==td->getCord(i,j-2)&&td->getCord(i,j)==td->getCord(i,j-3)){
-            return td->getCord(i,j);
+        else if(j >= 3){//Check the left
+          if(td->getCord(i,j-1)==td->getCord(i,j-2)&&td->getCord(i,j-1)==td->getCord(i,j-3)){
+            intARow[0]+=i;
           }
+
         }
         // Check for Vertical
         if(i <= rowSize-4){//Check the Up
-          if(td->getCord(i,j)==td->getCord(i+1,j)&&td->getCord(i,j)==td->getCord(i+2,j)&&td->getCord(i,j)==td->getCord(i+3,j)){
+          if(td->getCord(i+1,j)==td->getCord(i+2,j)&&td->getCord(i+1,j)==td->getCord(i+3,j)){
             return td->getCord(i,j);
           }
         }
         else if(i >= 3){//Check the down
-          if(td->getCord(i,j)==td->getCord(i-1,j)&&td->getCord(i,j)==td->getCord(i-2,j)&&td->getCord(i,j)==td->getCord(i-3,j)){
+          if(td->getCord(i-1,j)==td->getCord(i-2,j)&&td->getCord(i-1,j)==td->getCord(i-3,j)){
             return td->getCord(i,j);
           }
         }
         // Check for Diagonal
         if(j <= colSize-4 && i <= rowSize-4){
-          if(td->getCord(i,j)==td->getCord(i+1,j+1)&&td->getCord(i,j)==td->getCord(i+2,j+2)&&td->getCord(i,j)==td->getCord(i+3,j+3)){
+          if(td->getCord(i+1,j+1)==td->getCord(i+2,j+2)&&td->getCord(i+1,j+1)==td->getCord(i+3,j+3)){
             return td->getCord(i,j);
           }
           /*
@@ -118,18 +130,18 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j <= colSize-4 && i >= 3){
-          if(td->getCord(i,j)==td->getCord(i-1,j+1)&&td->getCord(i,j)==td->getCord(i-2,j+2)&&td->getCord(i,j)==td->getCord(i-3,j+3)){
+          if(td->getCord(i-1,j+1)==td->getCord(i-2,j+2)&&td->getCord(i-1,j+1)==td->getCord(i-3,j+3)){
             return td->getCord(i,j);
           }
         }
 
         if(j >= 3 && i <= rowSize-4){
-          if(td->getCord(i,j)==td->getCord(i+1,j-1)&&td->getCord(i,j)==td->getCord(i+2,j-2)&&td->getCord(i,j)==td->getCord(i+3,j-3)){
+          if(td->getCord(i+1,j-1)==td->getCord(i+2,j-2)&&td->getCord(i+1,j-1)==td->getCord(i+3,j-3)){
             return td->getCord(i,j);
           }
         }
         if(j >= 3 && i >= 3){
-          if(td->getCord(i,j)==td->getCord(i-1,j-1)&&td->getCord(i,j)==td->getCord(i-2,j-2)&&td->getCord(i,j)==td->getCord(i-3,j-3)){
+          if(td->getCord(i-1,j-1)==td->getCord(i-2,j-2)&&td->getCord(i-1,j-1)==td->getCord(i-3,j-3)){
             return td->getCord(i,j);
           }
         }
