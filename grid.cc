@@ -35,6 +35,15 @@ void Grid::clearGrid(){
   delete []theGrid;
   delete td;
 }
+int Grid::getrowSize(){
+  return rowSize;
+}
+int Grid::getcolSize(){
+  return colSize;
+}
+TextDisplay* Grid::getTextDisplay(){
+  return td;
+}
 Grid::Grid():theGrid(0),rowSize(6),colSize(7),checkers(0){}
 Grid::~Grid(){
   this->clearGrid();

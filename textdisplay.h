@@ -13,6 +13,7 @@ class TextDisplay {
   void notify(int r, int c, char ch);
   bool isFilled();
   char getWinner();
+  const char getCord(int r, int c);
   ~TextDisplay(); //decontructor
   friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };

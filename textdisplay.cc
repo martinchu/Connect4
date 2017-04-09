@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 int ttest=0;
+const char TextDisplay::getCord(int r, int c){
+	return theDisplay[r][c];
+}
 TextDisplay::TextDisplay(int r, int c):rowSize(r),colSize(c){
 	// char**
 	theDisplay= new char*[rowSize];

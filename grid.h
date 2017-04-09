@@ -21,7 +21,10 @@ class Grid {
   ~Grid();
   bool isFilled();
   char getWinner();
+  TextDisplay * getTextDisplay();
   void dropChecker(int targetcol,bool player1);
+  int getrowSize();
+  int getcolSize();
   void init();                 // Sets up an n x n grid.  Clears old grid, if necessary.
   void change(const int & state);  // Notify Cell (0,0) of the change to new state: state
   void init(int r, int c, int state); //set the state for r,c to state

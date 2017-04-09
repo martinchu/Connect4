@@ -23,6 +23,8 @@ class AI: public Player{
   int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth);
   int heuristic(Node* n);
   int evalBoard(Node* n);
+  int findPotentialWin(Node *n);
+  int potential4(Node *n);
 public:
   void checkHuman();
   void makeMove(bool p1);
