@@ -41,7 +41,11 @@ void AI::checkHuman(){
 
 }
 int AI::evalBoard(Node *n){
-  
+  Grid * g = n->state;
+  if(g->isFilled() && g->getWinner()=='F') return 0;//The board is full
+  else if(g->getWinner()=='1')return -100;
+  else if(g->getWinner()=='2')return 100;
+  return 50;
 }
 Node* AI::lookAhead(int steps){
   return 0;
@@ -64,23 +68,23 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     // if it is a parent node
     if(MAXPLAYER==true){
       // Max Player's Turn
-      v = INT_MIN;
+      n->num = INT_MIN;
       for(unsigned int i = 0; i< n->children.size();i++){
-        v = max(v, alphabeta(n->children[i], alpha, beta, false,depth-1));
-        alpha = max(alpha, v);
+        n->num = max(n->num, alphabeta(n->children[i], alpha, beta, false,depth-1));
+        alpha = max(alpha, n->num);
         if(beta<=alpha)break;
       }
     }
     else{
       // Min Player's Turn
-      v = INT_MAX;
+      n->num = INT_MAX;
       for(unsigned int i = 0; i< n->children.size();i++){
         int temp = alphabeta(n->children[i], alpha, beta, true,depth-1);
-        v = min(v, temp);
-        beta = min(beta, v);
+        n->num = min(n->num, temp);
+        beta = min(beta, n->num);
         if(beta<=alpha)break;
       }
-      cout<<"v: "<<v<<endl;
+      cout<<"n->num: "<<n->num<<endl;
 
     }
 

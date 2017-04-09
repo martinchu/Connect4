@@ -51,7 +51,7 @@ int main(){
 		p2 = ai;
 	}
 
-	if(mtest>=100){
+	if(mtest>=10000){
 		cout<<*g;
 		cout<<"going into while loop"<<endl;
 		cout<<"check Player 1: "<<endl;
