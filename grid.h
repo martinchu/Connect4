@@ -22,7 +22,7 @@ class Grid {
   bool isFilled();
   char getWinner();
   TextDisplay * getTextDisplay();
-  void dropChecker(int targetcol,bool player1);
+  int dropChecker(int targetcol,bool player1);
   int getrowSize();
   int getcolSize();
   int getCheckers();

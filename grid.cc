@@ -90,8 +90,7 @@ void Grid::change(const int & state){
   	// theGrid[0][0].setState(state);
   theGrid[0][0].notify(state);
 }  // Notify Cell (0,0) of the change to new state: state
-void Grid::dropChecker(int targetcol,bool player1){
-  bool moved = false;
+int Grid::dropChecker(int targetcol,bool player1){
   if(gtest>=100)cout<<"in dropChecker."<<endl;
   for(int i = rowSize-1; i>=0;i--){
     if(gtest>=100)cout<<"theGrid["<<i<<"]["<<targetcol<<"].getState(): "<<theGrid[i][targetcol].getState()<<endl;
@@ -100,13 +99,13 @@ void Grid::dropChecker(int targetcol,bool player1){
       if(player1) theGrid[i][targetcol].notify(1);
       else theGrid[i][targetcol].notify(2);
       moved = true;
-      break;
+      return 1;
     }
 
   }
-  if(moved)checkers++;
   else{
     cout<<"ERROR: the entire column is full."<<endl;
+    return -1;
   }
 }
 

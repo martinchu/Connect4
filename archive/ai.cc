@@ -14,14 +14,14 @@ void Human::checkHuman(){
 }
 void Human::makeMove(bool p1){
   int linenum;
-  int dropStatus = -1;
-  while(dropStatus<0){
   cout<<"Player, Please make move now."<<endl;
   cout<<"Please select the line you want to drop your token: ";
   bool checkInput = true;
   while(checkInput){
     cin>>linenum;
-    if(linenum > 7 || linenum < 1)cout<<"Invalid Line. Please Choose Again";
+    if(linenum > 7 || linenum < 1){
+      cout<<"Invalid Line. Please Choose Again";
+    }
     else if(cin.fail()){
       cin.clear(); //This corrects the stream.
       cin.ignore(); //This skips the left over stream data.
@@ -29,8 +29,7 @@ void Human::makeMove(bool p1){
     }
     else checkInput = false;
   }
-    dropStatus=Player::g->dropChecker(linenum-1,p1);
-  }
+  Player::g->dropChecker(linenum-1,p1);
 }
 Human::Human(Grid *grid){
   Player::g = grid;
