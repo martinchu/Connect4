@@ -166,7 +166,8 @@ int AI::findPotentialWin(Node* n){
         }
         // Check for (Descending) Diagonal
         if(j>= 0 && j <= colSize-4 && i >= 0 && i <= rowSize-4 && td->getCord(i+1,j+1)==td->getCord(i+2,j+2)&&td->getCord(i+2,j+2)==td->getCord(i+3,j+3)){
-          return td->getCord(i,j);
+          if(td->getCord(i+1,j+1)=='1') inARowOpponent[2]+=i;
+          else if(td->getCord(i+1,j+1)=='2') inARow[2]+=i;
           /*
           0 0 0 0
           0 x 0 0
@@ -175,7 +176,8 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 1 && j <= colSize-3 && i >= 1 && i <= rowSize-3 && td->getCord(i-1,j-1)==td->getCord(i+1,j+1)&&td->getCord(i+1,j+1)==td->getCord(i+2,j+2)){
-          return td->getCord(i,j);
+          if(td->getCord(i-1,j-1)=='1') inARowOpponent[2]+=i;
+          else if(td->getCord(i-1,j-1)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 0 0 0
@@ -184,7 +186,8 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 2 && j <= colSize-2 && i >= 2 && i <= rowSize-2 && td->getCord(i-2,j-2)==td->getCord(i-1,j-1)&&td->getCord(i-1,j-1)==td->getCord(i+1,j+1)){
-          return td->getCord(i,j);
+          if(td->getCord(i-2,j-2)=='1') inARowOpponent[2]+=i;
+          else if(td->getCord(i-2,j-2)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 x 0 0
@@ -193,7 +196,8 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 3 && j <= colSize-1 && i >= 3 && i <= rowSize-1 && td->getCord(i-3,j-3)==td->getCord(i-2,j-2)&&td->getCord(i-2,j-2)==td->getCord(i-1,j-1)){
-          return td->getCord(i,j);
+          if(td->getCord(i-3,j-3)=='1') inARowOpponent[2]+=i;
+          else if(td->getCord(i-3,j-3)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 x 0 0
@@ -208,6 +212,8 @@ int AI::findPotentialWin(Node* n){
           0 x 0 0
           0 0 0 0
           */
+          if(td->getCord(i-1,j+1)=='1') inARowOpponent[2]+=i;
+          else if(td->getCord(i-1,j+1)=='2') inARow[2]+=i;
 
         }
         if(j>= 1 && j <= colSize-3 && i >= 2 && i <= rowSize-2 && td->getCord(i+1,j-1)==td->getCord(i-1,j+1)&&td->getCord(i-1,j+1)==td->getCord(i-2,j+2)){
@@ -217,6 +223,8 @@ int AI::findPotentialWin(Node* n){
           5 0 0 0 0
           6 x 0 0 0
           */
+          if(td->getCord(i+1,j-1)=='1') inARowOpponent[3]+=i;
+          else if(td->getCord(i+1,j-1)=='2') inARow[3]+=i;
 
         }
         if(j>= 2 && j <= colSize-2 && i >= 1 && i <= rowSize-3 && td->getCord(i+2,j-2)==td->getCord(i+1,j-1)&&td->getCord(i+1,j-1)==td->getCord(i-1,j+1)){
@@ -227,10 +235,11 @@ int AI::findPotentialWin(Node* n){
           5 0 x 0 0
           6 x 0 0 0
           */
+          if(td->getCord(i+2,j-2)=='1') inARowOpponent[3]+=i;
+          else if(td->getCord(i+2,j-2)=='2') inARow[3]+=i;
 
         }
         if(j >= 3 && j <= colSize-1 && i >=0 && i <= rowSize-4 && td->getCord(i+1,j-1)==td->getCord(i+2,j-2)&&td->getCord(i+2,j-2)==td->getCord(i+3,j-3)){
-          return td->getCord(i,j);
           /*
           j 4 5 6 7
           i
@@ -239,6 +248,9 @@ int AI::findPotentialWin(Node* n){
           5 0 x 0 0
           6 x 0 0 0
           */
+          if(td->getCord(i+1,j-1)=='1') inARowOpponent[3]+=i;
+          else if(td->getCord(i+1,j-1)=='2') inARow[3]+=i;
+
         }
       }
     }
