@@ -1,8 +1,8 @@
-#Connect4 (Text Version)
+# Connect4 (Text Version)
 
-##Description
+## Description
 
-##Installation
+## Installation
 
 1. Clone or Download the reposity. If you clone the reposity via command line, please disregard step 2.
 2. Extract the zip file
@@ -21,7 +21,7 @@ make
 ```
 and start the game!
 
-###Installation Troubleshoot
+### Installation Troubleshoot
 If the X11/Xlib.h is not found during step 5, type
 ```
 sudo apt-get install libx11-dev
@@ -29,7 +29,7 @@ sudo apt-get install libx11-dev
 and the error should be resolved.
 
 
-##Structure
+## Structure
 
 C++ is chosen due to its well-rounded implementation of object-oriented programming.
 
@@ -45,7 +45,7 @@ The following objects are created:
 
 A
 
-##Reference
+## Reference
 
 
 Link to other projects or code you’re particularly proud of.
