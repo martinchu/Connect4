@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+int ptest = 100;
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
 }
@@ -16,27 +16,28 @@ void Human::makeMove(bool p1){
   int linenum;
   int dropStatus = -1;
   while(dropStatus<0){
-  cout<<"Player, Please make move now."<<endl;
-  cout<<"Please select the line you want to drop your token: ";
-  bool checkInput = true;
-  while(checkInput){
-    cin>>linenum;
-    if(linenum > 7 || linenum < 1)cout<<"Invalid Line. Please Choose Again";
-    else if(cin.fail()){
-      cin.clear(); //This corrects the stream.
-      cin.ignore(); //This skips the left over stream data.
-      cout << "Please enter an Integer only." << endl;
+    cout<<"Player, Please make move now."<<endl;
+    cout<<"Please select the line you want to drop your token: ";
+    bool checkInput = true;
+    while(checkInput){
+      cin>>linenum;
+      if(linenum > 7 || linenum < 1)cout<<"Invalid Line. Please Choose Again";
+      else if(cin.fail()){
+        cin.clear(); //This corrects the stream.
+        cin.ignore(); //This skips the left over stream data.
+        cout << "Please enter an Integer only." << endl;
+      }
+      else checkInput = false;
     }
-    else checkInput = false;
-  }
     dropStatus=Player::g->dropChecker(linenum-1,p1);
+    if(dropStatus<0)cout<<"ERROR: the entire column is full."<<endl;
   }
 }
 Human::Human(Grid *grid){
   Player::g = grid;
 }
 
-AI::AI(Grid* grid){
+AI::AI(Grid* grid,int iq):IQ(iq){
   Player::g = grid;
 }
 void AI::checkHuman(){
@@ -44,30 +45,59 @@ void AI::checkHuman(){
 
 }
 int AI::evalBoard(Node *n){
-  Grid * g = n->state;
+  int win =100;
+  int draw = 0;
+  int unsure = 50;
+
+  Grid * g = n->getState();
   if(g->isFilled() && g->getWinner()=='F') {
-    n->num = 0;
-    return 0;//The board is full
+    n->setValue(draw);
+    return draw;//The board is full
   }
   else if(g->getWinner()=='1'){
     // Player 1 (Human) Wins => Worse Sitution
-    n->num = -100;
-    return n->num;
+    n->setValue(win*-1);
+    return win*-1;
   }
   else if(g->getWinner()=='2'){
     // Player 2 (AI) Wins => Best Situation
-    n-> num = 100;
-    return n->num;
+    n->setValue(win);
+    return win;
   }
   // Unsure Situation => Go back to parent function and call other function
-  n->num = 50;
-  return n->num;
+  n->setValue(unsure);
+  return unsure;
 }
-Node* AI::lookAhead(int steps){
+Node* AI::lookAhead(Node* n,int steps){
+  // cout<<"lookAhead: "<<n->getID()<<"\tsteps: "<<steps<<endl;
+  Grid *g = n->getState();
+  int col = g->getcolSize();
+  if(steps == 0) return n;
+  else{
+    vector<Node *> tempc;
+    for(int i=0; i< col;i++){
+      Grid * tempGrid = new Grid(*g);//call a copy constructor to make a duplicate grid
+      // drop a checker on column i of the temporary grid
+      tempGrid->dropChecker(i,false);
+      cout<<"g: "<<g<<endl;
+      cout<<"tempGrid: "<<tempGrid<<endl;
+      cout<<"g: "<<endl<<(*g)<<endl;
+      cout<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
+      Node * tempNode = new Node(tempGrid);
+      // Make a new children node with new/temporary grid
+      tempNode = lookAhead(tempNode, steps-1);
+      // Recurse
+      tempc.push_back(tempNode);
+      // push it to the vector
+    }
+    n->setChildren(tempc);
+
+    return n;
+  }
   return 0;
 }
 int AI::findPotentialWin(Node* n){
-  Grid* g = n->state;
+  Grid* g = n->getState();
   TextDisplay *td = g->getTextDisplay();
   // Exploit potential opportunities to win/lose the Game
   // To simplify and lower computational cost,
@@ -122,7 +152,7 @@ int AI::findPotentialWin(Node* n){
         }
         // Check for (Descending) Diagonal
         if(j>= 0 && j <= colSize-4 && i >= 0 && i <= rowSize-4 && td->getCord(i+1,j+1)==td->getCord(i+2,j+2)&&td->getCord(i+2,j+2)==td->getCord(i+3,j+3)){
-            return td->getCord(i,j);
+          return td->getCord(i,j);
           /*
           0 0 0 0
           0 x 0 0
@@ -131,7 +161,7 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 1 && j <= colSize-3 && i >= 1 && i <= rowSize-3 && td->getCord(i-1,j-1)==td->getCord(i+1,j+1)&&td->getCord(i+1,j+1)==td->getCord(i+2,j+2)){
-            return td->getCord(i,j);
+          return td->getCord(i,j);
           /*
           x 0 0 0
           0 0 0 0
@@ -140,7 +170,7 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 2 && j <= colSize-2 && i >= 2 && i <= rowSize-2 && td->getCord(i-2,j-2)==td->getCord(i-1,j-1)&&td->getCord(i-1,j-1)==td->getCord(i+1,j+1)){
-            return td->getCord(i,j);
+          return td->getCord(i,j);
           /*
           x 0 0 0
           0 x 0 0
@@ -149,7 +179,7 @@ int AI::findPotentialWin(Node* n){
           */
         }
         if(j>= 3 && j <= colSize-1 && i >= 3 && i <= rowSize-1 && td->getCord(i-3,j-3)==td->getCord(i-2,j-2)&&td->getCord(i-2,j-2)==td->getCord(i-1,j-1)){
-            return td->getCord(i,j);
+          return td->getCord(i,j);
           /*
           x 0 0 0
           0 x 0 0
@@ -177,7 +207,7 @@ int AI::findPotentialWin(Node* n){
         }
         if(j>= 2 && j <= colSize-2 && i >= 1 && i <= rowSize-3 && td->getCord(i+2,j-2)==td->getCord(i+1,j-1)&&td->getCord(i+1,j-1)==td->getCord(i-1,j+1)){
           /*
-            4 5 6 7
+          4 5 6 7
           3 0 0 0 x
           4 0 0 0 0
           5 0 x 0 0
@@ -186,15 +216,15 @@ int AI::findPotentialWin(Node* n){
 
         }
         if(j >= 3 && j <= colSize-1 && i >=0 && i <= rowSize-4 && td->getCord(i+1,j-1)==td->getCord(i+2,j-2)&&td->getCord(i+2,j-2)==td->getCord(i+3,j-3)){
-            return td->getCord(i,j);
-            /*
-            j 4 5 6 7
-            i
-            3 0 0 0 0
-            4 0 0 x 0
-            5 0 x 0 0
-            6 x 0 0 0
-            */
+          return td->getCord(i,j);
+          /*
+          j 4 5 6 7
+          i
+          3 0 0 0 0
+          4 0 0 x 0
+          5 0 x 0 0
+          6 x 0 0 0
+          */
         }
       }
     }
@@ -213,7 +243,8 @@ int AI::heuristic(Node* n){
   return -1;
 }
 int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
-  if(n->children.size()==0||depth==0){
+  // mechanism to keep track of the best children/route
+  if(n->getChildrenSize()==0||depth==0){
     return heuristic(n);
   }
   else{
@@ -221,33 +252,50 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
     // if it is a parent node
     if(MAXPLAYER==true){
       // Max Player's Turn
-      n->num = INT_MIN;
-      for(unsigned int i = 0; i< n->children.size();i++){
-        n->num = max(n->num, alphabeta(n->children[i], alpha, beta, false,depth-1));
-        alpha = max(alpha, n->num);
+      n->setValue(INT_MIN);
+      for(int i = 0; i< n->getChildrenSize();i++){
+        n->setValue(max(n->getValue(), alphabeta(n->getChildren(i), alpha, beta, false,depth-1)));
+        alpha = max(alpha, n->getValue());
         if(beta<=alpha)break;
       }
     }
     else{
       // Min Player's Turn
-      n->num = INT_MAX;
-      for(unsigned int i = 0; i< n->children.size();i++){
-        int temp = alphabeta(n->children[i], alpha, beta, true,depth-1);
-        n->num = min(n->num, temp);
-        beta = min(beta, n->num);
+      n->setValue(INT_MAX);
+      for(int i = 0; i< n->getChildrenSize();i++){
+        int temp = alphabeta(n->getChildren(i), alpha, beta, true,depth-1);
+        n->setValue(min(n->getValue(), temp));
+        beta = min(beta, n->getValue());
         if(beta<=alpha)break;
       }
-      cout<<"n->num: "<<n->num<<endl;
-
+      cout<<"n->getValue(): "<<n->getValue()<<endl;
     }
-    return n->num;
+    return n->getValue();
   }
   return -1;
 }
 
 void AI::makeMove(bool p1){
-  Node *futureStates = lookAhead(3);//look 3 steps ahead
-  Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
+  if(g->getCheckers()<2){
+    int center = 4;
+    Player::g->dropChecker(center-1,false);
+    return;
+    // AI is always player 2 in this game, so p1 is always false
+    // always take the center for the first move
+    // (research indicates it is always the best move)
+  }
+  else{
+    cout<<"Calculating... Please Wait..."<<endl;
+    if(ptest>=100)cout<<"looing "<<IQ<<" steps ahead"<<endl;
+    Node *futureStates = new Node(g);
+    futureStates = lookAhead(futureStates,IQ);//look certains steps ahead, depending on IQ of the AI
+    int choice = alphabeta(futureStates,INT_MIN,INT_MAX,true,3);
+    if(choice ==-1) Player::g->dropChecker(1,false);
+    // Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
+    delete futureStates;
+    // deleting the futureStates;
+    // Note: it might add time complexity, will figure out a way to keep some states
+  }
 }
 
 AI::~AI(){

@@ -13,7 +13,7 @@ Cell::Cell(){
   td=0;
 }
 void Cell::notifyDisplay(){
-  if(ctest>=10){
+  if(ctest>=1000){
     cout<<"In notifyDisplay..."<<endl;
   }
   td->TextDisplay::notify(r,c,state+48);
@@ -22,9 +22,9 @@ int Cell::getState(){
   return state;
 }
 void Cell::setState(const int& change){
-  if(ctest>=10)cout<<"inSetState"<<endl;
+  if(ctest>=1000)cout<<"inSetState"<<endl;
   state=change;
-  if(ctest>=10)cout<<"done state change"<<endl<<"change: "<<change<<" State: "<<getState()<<endl;
+  if(ctest>=1000)cout<<"done state change"<<"change: "<<change<<" State: "<<getState()<<endl;
   notifyDisplay();
 }
 void Cell::setCoords(const int r, const int c){
@@ -42,7 +42,7 @@ void Cell::addNeighbour(Cell *neighbour){
   numNeighbours++;
 }
 void Cell::notify(const int & change){
-  if(ctest>=100)cout<<"in Cell notify"<<endl;
+  if(ctest>=1000)cout<<"in Cell notify"<<endl;
   setState(change);
   notifyDisplay();
 }

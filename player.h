@@ -19,16 +19,17 @@ public:
   ~Human();
 };
 class AI: public Player{
-  Node* lookAhead(int steps);
+  Node* lookAhead(Node* n, int steps);
   int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth);
   int heuristic(Node* n);
   int evalBoard(Node* n);
   int findPotentialWin(Node *n);
   int potential4(Node *n);
+  const int IQ;
 public:
   void checkHuman();
   void makeMove(bool p1);
-  AI(Grid *g);
+  AI(Grid *g,int iq);
   ~AI();
 };
 

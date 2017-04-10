@@ -56,8 +56,9 @@ int main(){
 	}
 	Human *h1 = new Human(g);
 	Human *h2 = new Human(g);
-
-	AI *ai = new AI(g);
+	int intelligence = 2;
+	// determine how smart the AI will be.
+	AI *ai = new AI(g,intelligence);
 	Player * p1 = h1;
 	Player * p2;
 	if (mode ==1) {
@@ -84,32 +85,28 @@ int main(){
 		ifstream infile(inf.c_str());
 		setGrid(infile,g);
 	}
-	// bool p1turn = true;
-	// while(true){
-	// 	cout<<"g->getWinner(): "<<g->getWinner()<<endl;
-	// 	if(g->getWinner()!='F'){
-	// 		// Find Winner
-	// 		cout<<"Player "<<g->getWinner()<<" wins!!!"<<endl;
-	// 		break;
-	// 	}
-	// 	else if(g->isFilled()==true){
-	// 		cout<<"This is a draw!"<<endl;
-	// 		break;
-	// 	}
-	// 	else{
-	// 		Player * p = (p1turn? p1: p2);
-	// 		if(p1turn) cout<<"It is Player 1's turn."<<endl;
-	// 		else cout<<"It is Player 2's turn."<<endl;
-	// 		p->makeMove(p1turn);
-	// 		cout<<*g;
-	// 		p1turn = !p1turn;
-	// 	}
-	// }
-	// g->printAddress();
-	if(memtest>=100){
-		cout<<"deleting grid"<<endl;
+	bool p1turn = true;
+	while(true){
+		if(mtest==1000)cout<<"g->getWinner(): "<<g->getWinner()<<endl;
+		if(g->getWinner()!='F'){
+			// Find Winner
+			cout<<"Player "<<g->getWinner()<<" wins!!!"<<endl;
+			break;
+		}
+		else if(g->isFilled()==true){
+			cout<<"This is a draw!"<<endl;
+			break;
+		}
+		else{
+			Player * p = (p1turn? p1: p2);
+			if(p1turn) cout<<"It is Player 1's turn."<<endl;
+			else cout<<"It is Player 2's turn."<<endl;
+			p->makeMove(p1turn);
+			cout<<*g;
+			p1turn = !p1turn;
+		}
 	}
-	delete g;
+	if(memtest>=100)cout<<"deleting grid"<<endl;
 	delete h1;
 	delete h2;
 	delete ai;

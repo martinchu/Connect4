@@ -10,6 +10,7 @@ class TextDisplay {
   unsigned int colourCount[2];
  public:
   TextDisplay(int row, int col); //one arg constructor where the parameter is the gridSize
+  TextDisplay(const TextDisplay& oldtd);
   void notify(int r, int c, char ch);
   bool isFilled();
   char getWinner();

@@ -6,6 +6,19 @@ int ttest=0;
 const char TextDisplay::getCord(int r, int c){
 	return theDisplay[r][c];
 }
+TextDisplay::TextDisplay(const TextDisplay& oldtd):rowSize(oldtd.rowSize),colSize(oldtd.colSize){
+	theDisplay= new char*[rowSize];
+	for(int i=0;i<rowSize;i++){
+		theDisplay[i]=new char[colSize];
+	}
+	for(int j=0;j<rowSize;j++){
+		for(int k=0;k<colSize;k++){
+			theDisplay[j][k]=oldtd.theDisplay[j][k];
+			// cout<<theDisplay[j][k];
+		}
+		// cout<<endl;
+	}
+}
 TextDisplay::TextDisplay(int r, int c):rowSize(r),colSize(c){
 	// char**
 	theDisplay= new char*[rowSize];
