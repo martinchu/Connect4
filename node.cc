@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
+int ntest = 100;
 
 Node::Node():num(0),height(1),id("0"){}
 Node::Node(string s,int i):num(0),height(1){
@@ -22,7 +23,7 @@ Node::Node(Grid *g):state(g){}
 void Node::setChildren(vector<Node *>c){
   children = c;
 }
-Grid* Node::getState(){
+ Grid* Node::getState(){
   return state;
 }
 int Node::getValue(){
@@ -36,16 +37,19 @@ const int Node::getChildrenSize(){
 }
 ostream &operator<<(ostream&out, const Node &n){
   if(n.children.size()==0){
-    cout<<"root node -> value: "<<n.num<<"id: "<<n.id<<endl;
+    if(ntest>=100){
+      cout<<"root node -> value: "<<n.num<<"id: "<<n.id<<endl;
+      // cout<<*n.getState()<<endl;
+    }
   }
   else{
     cout<<"parent node with "<<n.children.size()<<" children. "<<endl;
     for(unsigned int i = 0; i<n.children.size();i++){
       cout<<"child "<<i<<": ";
-      cout<<*n.children[i];
     }
     cout<<"done looping node ID: "<<n.id<<endl;
   }
+  return out;
 }
 Node* Node::getChildren(int i){
   return children[i];

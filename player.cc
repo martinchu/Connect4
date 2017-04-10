@@ -72,17 +72,23 @@ Node* AI::lookAhead(Node* n,int steps){
   // cout<<"lookAhead: "<<n->getID()<<"\tsteps: "<<steps<<endl;
   Grid *g = n->getState();
   int col = g->getcolSize();
-  if(steps == 0) return n;
+  if(steps == 0) {
+    if(ptest>=100)cout<<*n;
+    return n;
+  }
+
   else{
     vector<Node *> tempc;
     for(int i=0; i< col;i++){
       Grid * tempGrid = new Grid(*g);//call a copy constructor to make a duplicate grid
       // drop a checker on column i of the temporary grid
       tempGrid->dropChecker(i,false);
-      cout<<"g: "<<g<<endl;
-      cout<<"tempGrid: "<<tempGrid<<endl;
-      cout<<"g: "<<endl<<(*g)<<endl;
-      cout<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
+      if(ptest>=1000){
+        cout<<"g: "<<g<<endl;
+        cout<<"tempGrid: "<<tempGrid<<endl;
+        cout<<"g: "<<endl<<(*g)<<endl;
+        cout<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
+      }
       Node * tempNode = new Node(tempGrid);
       // Make a new children node with new/temporary grid
       tempNode = lookAhead(tempNode, steps-1);
@@ -121,15 +127,18 @@ int AI::findPotentialWin(Node* n){
         // Check Horizontal
         // 0 x x x
         if(j>=0 && j <= colSize-4 && td->getCord(i,j+1)==td->getCord(i,j+2)&&td->getCord(i,j+2)==td->getCord(i,j+3)){
-          inARow[0]+=i;
+          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
         }
         // x 0 x x
         if(j>=1 && j <= colSize-3 && td->getCord(i,j-1)==td->getCord(i,j+1)&&td->getCord(i,j+1)==td->getCord(i,j+2)){
-          inARow[0]+=i;
+          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
         }
         // x x 0 x
         if(j>=2 && j <= colSize-2 && td->getCord(i,j-2)==td->getCord(i,j-1)&&td->getCord(i,j-1)==td->getCord(i,j+1)){
-          inARow[0]+=i;
+          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
         }
         // x x x 0
         if(j>=3 && j <= colSize-1 && td->getCord(i,j-3)==td->getCord(i,j-2)&&td->getCord(i,j-2)==td->getCord(i,j-1)){
@@ -236,9 +245,9 @@ int AI::potential4(Node *n){
 }
 int AI::heuristic(Node* n){
   if(evalBoard(n)!=50) return evalBoard(n);
-  else{
-    int pw = findPotentialWin(n);
+  else if(findPotentialWin(n)!=-100){
     int p4 = potential4(n);
+    return p4;
   }
   return -1;
 }

@@ -20,7 +20,7 @@ public:
   int getValue();
   void setValue(int v);
   Node(Grid *g);
-  
+
   Node();
   Node(string s);
   Node(string s, int num);

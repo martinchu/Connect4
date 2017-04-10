@@ -116,13 +116,7 @@ ostream &operator<<(ostream &out, const Grid &g){
 }
 
 Grid::Grid(const Grid &g){
-  if(false){
-    cout<<"IN GRID COPY CONSTRUCTOR(before constructor)"<<endl;
-    cout<<"NEW Grid: "<<&theGrid<<"\tOLD Grid: "<<&g.theGrid<<endl;
-    cout<<"NEW rowSize: "<<rowSize<<"\tNEW colSize: "<<colSize<<endl;
-    cout<<"NEW TD: "<<td<<"\tOLD TD: "<<&g.td<<endl;
-    cout<<*td<<endl;
-  }
+
   // td = new TextDisplay(*g.td);
   theGrid=new Cell*[g.rowSize];
   for(int q=0;q<g.rowSize;q++){
@@ -141,11 +135,11 @@ Grid::Grid(const Grid &g){
   checkers = g.checkers;
   p1 = g.p1;
   p2 = g.p2;
-  if(gtest>=100){
+  if(gtest>=1000){
     cout<<"IN GRID COPY CONSTRUCTOR"<<endl;
     cout<<"NEW Grid: "<<&theGrid<<"\tOLD Grid: "<<&g.theGrid<<endl;
     cout<<"NEW rowSize: "<<rowSize<<"\tNEW colSize: "<<colSize<<endl;
     cout<<"NEW TD: "<<td<<"\tOLD TD: "<<&g.td<<endl;
-    cout<<*td<<endl;
   }
+  if(gtest>=100)cout<<*td<<endl;
 }
