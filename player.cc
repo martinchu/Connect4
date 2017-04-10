@@ -132,32 +132,37 @@ int AI::findPotentialWin(Node* n){
         }
         // x 0 x x
         if(j>=1 && j <= colSize-3 && td->getCord(i,j-1)==td->getCord(i,j+1)&&td->getCord(i,j+1)==td->getCord(i,j+2)){
-          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
+          if(td->getCord(i,j-1)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j-1)=='2') inARow[0]+=i;
         }
         // x x 0 x
         if(j>=2 && j <= colSize-2 && td->getCord(i,j-2)==td->getCord(i,j-1)&&td->getCord(i,j-1)==td->getCord(i,j+1)){
-          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
+          if(td->getCord(i,j-2)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j-2)=='2') inARow[0]+=i;
         }
         // x x x 0
         if(j>=3 && j <= colSize-1 && td->getCord(i,j-3)==td->getCord(i,j-2)&&td->getCord(i,j-2)==td->getCord(i,j-1)){
-          inARow[0]+=i;
+          if(td->getCord(i,j-3)=='1') inARowOpponent[0]+=i;
+          else if(td->getCord(i,j-3)=='2') inARow[0]+=i;
         }
-
 
         // Check Vertical
         if(i>= 0 && i <= rowSize-4 && td->getCord(i+1,j)==td->getCord(i+2,j)&&td->getCord(i+2,j)==td->getCord(i+3,j)){
-          inARow[1]+=i;
+          if(td->getCord(i+1,j)=='1') inARowOpponent[1]+=i;
+          else if(td->getCord(i+1,j)=='2') inARow[1]+=i;
+
         }
         if(i>= 1 && i <= rowSize-3 && td->getCord(i-1,j)==td->getCord(i+1,j)&&td->getCord(i+1,j)==td->getCord(i+2,j)){
-          inARow[1]+=i;
+          if(td->getCord(i-1,j)=='1') inARowOpponent[1]+=i;
+          else if(td->getCord(i-1,j)=='2') inARow[1]+=i;
         }
         if(i>= 2 && i <= rowSize-2 && td->getCord(i-2,j)==td->getCord(i-1,j)&&td->getCord(i-1,j)==td->getCord(i+1,j)){
-          inARow[1]+=i;
+          if(td->getCord(i-2,j)=='1') inARowOpponent[1]+=i;
+          else if(td->getCord(i-2,j)=='2') inARow[1]+=i;
         }
         if(i>= 3 && i <= rowSize-1 && td->getCord(i-3,j)==td->getCord(i-2,j)&&td->getCord(i-2,j)==td->getCord(i-1,j)){
-          inARow[1]+=i;
+          if(td->getCord(i-3,j)=='1') inARowOpponent[1]+=i;
+          else if(td->getCord(i-3,j)=='2') inARow[1]+=i;
         }
         // Check for (Descending) Diagonal
         if(j>= 0 && j <= colSize-4 && i >= 0 && i <= rowSize-4 && td->getCord(i+1,j+1)==td->getCord(i+2,j+2)&&td->getCord(i+2,j+2)==td->getCord(i+3,j+3)){
@@ -277,7 +282,7 @@ int AI::alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth){
         beta = min(beta, n->getValue());
         if(beta<=alpha)break;
       }
-      cout<<"n->getValue(): "<<n->getValue()<<endl;
+      // cout<<"n->getValue(): "<<n->getValue()<<endl;
     }
     return n->getValue();
   }

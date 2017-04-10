@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 //Xwindow * theWindow;
-int gtest=1000;
+int gtest=100;
 int memgtest=100;
 
 void Grid::init(int r, int c, int state){

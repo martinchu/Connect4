@@ -1,13 +1,9 @@
-theGrid: 0
 Welcome to Connect4. Type 1 or 2 to choose your mode:
 1: Play with another Player
 2: Play with PC
 Load Game?(Y/N)It is Player 1's turn.
 Player, Please make move now.
-Please select the line you want to drop your token: in dropChecker. grid address: 0x255fc20
-theGrid[5][3].getState(): 0
-totalCheckers: 1
-in Grid::<<, grid address: 0x255fc20
+Please select the line you want to drop your token: totalCheckers: 1
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -16,11 +12,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 1 0 0 0 
 It is Player 2's turn.
-in dropChecker. grid address: 0x255fc20
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 0
 totalCheckers: 2
-in Grid::<<, grid address: 0x255fc20
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -30,12 +22,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 1 0 0 0 
 It is Player 1's turn.
 Player, Please make move now.
-Please select the line you want to drop your token: in dropChecker. grid address: 0x255fc20
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 0
-totalCheckers: 3
-in Grid::<<, grid address: 0x255fc20
+Please select the line you want to drop your token: totalCheckers: 3
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -46,10 +33,6 @@ column: 1 2 3 4 5 6 7
 It is Player 2's turn.
 Calculating... Please Wait...
 looing 2 steps ahead
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2561c10	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2562600	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -58,13 +41,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2561c10
-theGrid[5][0].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2562780	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2563170	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -73,15 +50,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2562780
-theGrid[5][0].getState(): 2
-theGrid[4][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2563310	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2563d00	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -90,14 +60,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2563310
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2563ea0	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25632f0	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -106,14 +70,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2563ea0
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2564a20	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2563e80	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -122,17 +80,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2564a20
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2565570	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2565f60	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -141,14 +90,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2565570
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2566130	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2566b20	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -157,14 +100,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2566130
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2566ca0	OLD Grid: 0x2561c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2567690	OLD TD: 0x2561c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -173,14 +110,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         2 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2566ca0
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25660e0	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2568210	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -189,13 +120,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x25660e0
-theGrid[5][1].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2568390	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2568d80	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -204,14 +129,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2568390
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2568f20	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2569910	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -220,15 +139,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2568f20
-theGrid[5][1].getState(): 2
-theGrid[4][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2569ab0	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2568f00	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -237,14 +149,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2569ab0
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256a600	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2569a90	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -253,17 +159,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x256a600
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256b150	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256bb40	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -272,14 +169,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x256b150
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256bd10	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256c700	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -288,14 +179,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x256bd10
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256c880	OLD Grid: 0x25660e0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256d270	OLD TD: 0x2566110
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -304,14 +189,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 2 0 1 0 0 0 
 
-in dropChecker. grid address: 0x256c880
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256bcc0	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2567890	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -320,13 +199,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x256bcc0
-theGrid[5][2].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256df50	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256e940	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -335,14 +208,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x256df50
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256eae0	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256f4d0	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -351,14 +218,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x256eae0
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x256f670	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256eac0	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -367,15 +228,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x256f670
-theGrid[5][2].getState(): 2
-theGrid[4][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25701c0	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256f650	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -384,17 +238,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x25701c0
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2570d10	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2571700	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -403,14 +248,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x2570d10
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25718d0	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25722c0	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -419,14 +258,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x25718d0
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2572440	OLD Grid: 0x256bcc0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2572e30	OLD TD: 0x256bcf0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -435,14 +268,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 2 1 0 0 0 
 
-in dropChecker. grid address: 0x2572440
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2571880	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x256d470	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -451,16 +278,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2571880
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2573af0	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25744e0	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -469,14 +287,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2573af0
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2574680	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2575070	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -485,14 +297,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2574680
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2575210	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2574660	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -501,14 +307,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2575210
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2575d90	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25751f0	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -517,18 +317,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2575d90
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 2
-theGrid[1][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25768e0	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25772d0	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -537,14 +327,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x25768e0
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25774a0	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2577e90	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -553,14 +337,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x25774a0
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2578010	OLD Grid: 0x2571880
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2578a00	OLD TD: 0x25718b0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -569,14 +347,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2578010
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2577450	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2579560	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -585,13 +357,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2577450
-theGrid[5][4].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25796e0	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257a0d0	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -600,14 +366,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x25796e0
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257a270	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257ac60	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -616,14 +376,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257a270
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257ae00	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257a250	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -632,14 +386,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257ae00
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257b950	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257ade0	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -648,17 +396,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257b950
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257c4a0	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257ce90	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -667,15 +406,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257c4a0
-theGrid[5][4].getState(): 2
-theGrid[4][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257d060	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257da50	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -684,14 +416,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257d060
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257dbd0	OLD Grid: 0x2577450
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257e5c0	OLD TD: 0x2577480
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -700,14 +426,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 2 0 0 
 
-in dropChecker. grid address: 0x257dbd0
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257e7c0	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257f170	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -716,13 +436,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x257e7c0
-theGrid[5][5].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257f2f0	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257fce0	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -731,14 +445,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x257f2f0
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x257fe80	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25649f0	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -747,14 +455,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x257fe80
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25809d0	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x257fe60	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -763,14 +465,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x25809d0
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2581550	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25809b0	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -779,17 +475,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x2581550
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25820a0	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2582a90	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -798,14 +485,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x25820a0
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2582c60	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2583650	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -814,15 +495,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x2582c60
-theGrid[5][5].getState(): 2
-theGrid[4][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25837d0	OLD Grid: 0x257e7c0
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25841c0	OLD TD: 0x257e7f0
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -831,14 +505,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 2 0 
 
-in dropChecker. grid address: 0x25837d0
-theGrid[5][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2582c10	OLD Grid: 0x255fc20
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2584d20	OLD TD: 0x255fc50
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -847,13 +515,7 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 0 
 
-in dropChecker. grid address: 0x2582c10
-theGrid[5][6].getState(): 0
 totalCheckers: 4
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2584ea0	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2585890	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -862,14 +524,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2584ea0
-theGrid[5][0].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2585a30	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2586420	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -878,14 +534,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2585a30
-theGrid[5][1].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x25865c0	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2585a10	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -894,14 +544,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x25865c0
-theGrid[5][2].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2587110	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x25865a0	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -910,17 +554,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2587110
-theGrid[5][3].getState(): 1
-theGrid[4][3].getState(): 2
-theGrid[3][3].getState(): 1
-theGrid[2][3].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2587c60	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2588650	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -929,14 +564,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2587c60
-theGrid[5][4].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2588820	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2589210	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -945,14 +574,8 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2588820
-theGrid[5][5].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-IN GRID COPY CONSTRUCTOR
-NEW Grid: 0x2589390	OLD Grid: 0x2582c10
-NEW rowSize: 6	NEW colSize: 7
-NEW TD: 0x2589d80	OLD TD: 0x2582c40
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
@@ -961,22 +584,9 @@ column: 1 2 3 4 5 6 7
         0 0 0 2 0 0 0 
         0 0 0 1 0 0 2 
 
-in dropChecker. grid address: 0x2589390
-theGrid[5][6].getState(): 2
-theGrid[4][6].getState(): 0
 totalCheckers: 5
 root node -> value: 0id: 
-n->getValue(): -1
-n->getValue(): -1
-n->getValue(): -1
-n->getValue(): -1
-n->getValue(): -1
-n->getValue(): -1
-n->getValue(): -1
-in dropChecker. grid address: 0x255fc20
-theGrid[5][1].getState(): 0
 totalCheckers: 4
-in Grid::<<, grid address: 0x255fc20
 column: 1 2 3 4 5 6 7
         0 0 0 0 0 0 0 
         0 0 0 0 0 0 0 
