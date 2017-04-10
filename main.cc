@@ -40,19 +40,21 @@ int main(){
 	cout<<"1: Play with another Player"<<endl;
 	cout<<"2: Play with PC"<<endl;
 	int mode;
-	bool checkInput = true;
+	// bool checkInput = true;
 	// Ask User to pick a mode
-	while(checkInput){
-		cin>>mode;
-		if(mode > 2 || mode < 1){
-			cout<<"Invalid Number. Please Choose Again";
+	while(true){
+		if(cin>>mode){
+			if(mode > 2 || mode < 1){
+				cout<<"Invalid Number. Please Choose Again";
+			}
+			else break;
 		}
-		else if(cin.fail()){
+		else {
+			if(cin.eof())return -1;
 			cin.clear(); //This corrects the stream.
 			cin.ignore(); //This skips the left over stream data.
 			cout << "Please enter an Integer only." << endl;
 		}
-		else checkInput = false;
 	}
 	Human *h1 = new Human(g);
 	Human *h2 = new Human(g);
@@ -101,7 +103,8 @@ int main(){
 			Player * p = (p1turn? p1: p2);
 			if(p1turn) cout<<"It is Player 1's turn."<<endl;
 			else cout<<"It is Player 2's turn."<<endl;
-			p->makeMove(p1turn);
+			int eof = p->makeMove(p1turn);
+			if(eof ==-1 )break;
 			cout<<*g;
 			p1turn = !p1turn;
 		}

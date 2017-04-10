@@ -7,6 +7,9 @@ using namespace std;
 int gtest=100;
 int memgtest=100;
 int testTotalCheckers = 0;
+int Grid::getColumnChecker(int targetcol){
+  return CheckersCounter[targetcol];
+}
 void Grid::init(int r, int c, int state){
   if(gtest>=10){
     cout<<"in Grid::init"<<endl;
@@ -91,6 +94,7 @@ int Grid::dropChecker(int targetcol,bool player1){
       checkers++;
       if(testTotalCheckers>=100)cout<<"totalCheckers: "<<checkers<<endl;
       // moved = true;
+      CheckersCounter[targetcol]++;
       return 1;
     }
   }
@@ -112,9 +116,17 @@ ostream &operator<<(ostream &out, const Grid &g){
     cout<<"in Grid::<<, grid address: "<<&g<<endl;
   }
   out<<*(g.td);
+  if(gtest>=100){
+    cout<<"1 2 3 4 5 6 7"<<endl;
+    for(int i=0;i<g.colSize;i++){
+      cout<<g.CheckersCounter[i];
+    }
+    cout<<endl;
+  }
+
   return out;
 }
-
+// Copy CONSTRUCTOR
 Grid::Grid(const Grid &g){
 
   // td = new TextDisplay(*g.td);

@@ -8,13 +8,13 @@ protected:
   Grid *g;
 public:
   virtual void checkHuman() = 0; //Testing Purpose;
-  virtual void makeMove(bool p1) = 0;
+  virtual int makeMove(bool p1) = 0;
   virtual ~Player();
 };
 class Human: public Player{
 public:
   void checkHuman();
-  void makeMove(bool p1);
+  int makeMove(bool p1);
   Human(Grid *grid);
   ~Human();
 };
@@ -25,10 +25,11 @@ class AI: public Player{
   int evalBoard(Node* n);
   int findPotentialWin(Node *n);
   int potential4(Node *n);
+  int randDrop();
   const int IQ;
 public:
   void checkHuman();
-  void makeMove(bool p1);
+  int makeMove(bool p1);
   AI(Grid *g,int iq);
   ~AI();
 };
