@@ -19,7 +19,7 @@ public:
   ~Human();
 };
 class AI: public Player{
-  Node* lookAhead(Node* n, int steps);
+  Node* lookAhead(Node* n, int steps,bool humanMove);
   int alphabeta(Node *n, int alpha, int beta, bool MAXPLAYER, int depth);
   int heuristic(Node* n);
   int evalBoard(Node* n);

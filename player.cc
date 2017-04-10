@@ -68,12 +68,11 @@ int AI::evalBoard(Node *n){
   n->setValue(unsure);
   return unsure;
 }
-Node* AI::lookAhead(Node* n,int steps){
+Node* AI::lookAhead(Node* n,int steps, bool humanMove){
   // cout<<"lookAhead: "<<n->getID()<<"\tsteps: "<<steps<<endl;
   Grid *g = n->getState();
   int col = g->getcolSize();
   if(steps == 0) {
-    if(ptest>=100)cout<<*n;
     return n;
   }
 
@@ -82,22 +81,20 @@ Node* AI::lookAhead(Node* n,int steps){
     for(int i=0; i< col;i++){
       Grid * tempGrid = new Grid(*g);//call a copy constructor to make a duplicate grid
       // drop a checker on column i of the temporary grid
-      tempGrid->dropChecker(i,false);
+      tempGrid->dropChecker(i,humanMove);
       if(ptest>=1000){
-        cout<<"g: "<<g<<endl;
-        cout<<"tempGrid: "<<tempGrid<<endl;
-        cout<<"g: "<<endl<<(*g)<<endl;
-        cout<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
+        cout<<"g: "<<g<<endl<<"tempGrid: "<<tempGrid<<endl;
+        cout<<"g: "<<endl<<(*g)<<endl<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
       }
       Node * tempNode = new Node(tempGrid);
       // Make a new children node with new/temporary grid
-      tempNode = lookAhead(tempNode, steps-1);
+      tempNode = lookAhead(tempNode, steps-1,!humanMove);
       // Recurse
       tempc.push_back(tempNode);
       // push it to the vector
     }
     n->setChildren(tempc);
-
+    if(ptest>=1000)cout<<*n;
     return n;
   }
   return 0;
@@ -227,7 +224,6 @@ int AI::findPotentialWin(Node* n){
           */
           if(td->getCord(i+1,j-1)=='1') inARowOpponent[3]+=i;
           else if(td->getCord(i+1,j-1)=='2') inARow[3]+=i;
-
         }
         if(j>= 2 && j <= colSize-2 && i >= 1 && i <= rowSize-3 && td->getCord(i+2,j-2)==td->getCord(i+1,j-1)&&td->getCord(i+1,j-1)==td->getCord(i-1,j+1)){
           /*
@@ -317,7 +313,9 @@ void AI::makeMove(bool p1){
     cout<<"Calculating... Please Wait..."<<endl;
     if(ptest>=100)cout<<"looing "<<IQ<<" steps ahead"<<endl;
     Node *futureStates = new Node(g);
-    futureStates = lookAhead(futureStates,IQ);//look certains steps ahead, depending on IQ of the AI
+    futureStates = lookAhead(futureStates,IQ,false);
+    //look certains steps ahead, depending on IQ of the AI
+    // next Step is an AI move
     int choice = alphabeta(futureStates,INT_MIN,INT_MAX,true,3);
     if(choice ==-1) Player::g->dropChecker(1,false);
     // Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);

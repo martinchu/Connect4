@@ -6,7 +6,7 @@ using namespace std;
 //Xwindow * theWindow;
 int gtest=100;
 int memgtest=100;
-
+int testTotalCheckers = 0;
 void Grid::init(int r, int c, int state){
   if(gtest>=10){
     cout<<"in Grid::init"<<endl;
@@ -89,7 +89,7 @@ int Grid::dropChecker(int targetcol,bool player1){
       if(player1) theGrid[i][targetcol].notify(1);
       else theGrid[i][targetcol].notify(2);
       checkers++;
-      if(gtest>=100)cout<<"totalCheckers: "<<checkers<<endl;
+      if(testTotalCheckers>=100)cout<<"totalCheckers: "<<checkers<<endl;
       // moved = true;
       return 1;
     }
@@ -141,5 +141,5 @@ Grid::Grid(const Grid &g){
     cout<<"NEW rowSize: "<<rowSize<<"\tNEW colSize: "<<colSize<<endl;
     cout<<"NEW TD: "<<td<<"\tOLD TD: "<<&g.td<<endl;
   }
-  if(gtest>=100)cout<<*td<<endl;
+  // if(gtest>=100)cout<<"CC->td:"<<*td<<endl;
 }
