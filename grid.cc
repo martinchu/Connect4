@@ -141,7 +141,7 @@ Grid::Grid(const Grid &g){
   checkers = g.checkers;
   p1 = g.p1;
   p2 = g.p2;
-  if(gtest>=10){
+  if(gtest>=100){
     cout<<"IN GRID COPY CONSTRUCTOR"<<endl;
     cout<<"NEW Grid: "<<&theGrid<<"\tOLD Grid: "<<&g.theGrid<<endl;
     cout<<"NEW rowSize: "<<rowSize<<"\tNEW colSize: "<<colSize<<endl;

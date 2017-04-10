@@ -8,6 +8,7 @@
 
 class Grid {
   Cell **theGrid;                   // The actual n x n grid.
+  int CheckersCounter[7];
   int rowSize;
   int colSize;                   // Size of the grid (n)
   int checkers;
