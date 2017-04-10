@@ -218,6 +218,8 @@ int AI::findPotentialWin(Node* n){
         }
         if(j>= 1 && j <= colSize-3 && i >= 2 && i <= rowSize-2 && td->getCord(i+1,j-1)==td->getCord(i-1,j+1)&&td->getCord(i-1,j+1)==td->getCord(i-2,j+2)){
           /*
+          j 4 5 6 7
+          i
           3 0 0 0 x
           4 0 0 x 0
           5 0 0 0 0
@@ -229,7 +231,8 @@ int AI::findPotentialWin(Node* n){
         }
         if(j>= 2 && j <= colSize-2 && i >= 1 && i <= rowSize-3 && td->getCord(i+2,j-2)==td->getCord(i+1,j-1)&&td->getCord(i+1,j-1)==td->getCord(i-1,j+1)){
           /*
-          4 5 6 7
+          j 4 5 6 7
+          i
           3 0 0 0 x
           4 0 0 0 0
           5 0 x 0 0
