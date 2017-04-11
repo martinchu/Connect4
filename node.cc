@@ -12,6 +12,9 @@ int ntest = 1000;
 int potentialLcheck =10;
 int abtest = 100;
 
+int Node::nextRowUp(int row){
+  return g->getrowSize()-g->getColumnChecker(row)-1;
+}
 
 int Node::findPotentialWin(){
   Grid* g = state;
@@ -39,72 +42,155 @@ int Node::findPotentialWin(){
   for(int i = 0; i< rowSize;i++){
     for(int j = 0; j< colSize;j++){
       if(td->getCord(i,j)=='0'){//if there is empty spot for a checker
+
+        // Check Vertical First. The Vertical Win is the most imminent
+        if(i>= 0 && i <= rowSize-4 && td->getCord(i+1,j)==td->getCord(i+2,j)&&td->getCord(i+2,j)==td->getCord(i+3,j)){
+          if(potentialLcheck>=10)cout<<"V1: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i+1,j)=='1'){
+            num = -100;
+          }
+          else if(td->getCord(i+1,j)=='2'){
+            num = 100
+          } //inARow[1]+=i;
+          return num;
+        }
+        if(i>= 1 && i <= rowSize-3 && td->getCord(i-1,j)==td->getCord(i+1,j)&&td->getCord(i+1,j)==td->getCord(i+2,j)){
+          if(potentialLcheck>=10)cout<<"V2: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i-1,j)=='1'){
+            num = -100;
+          }
+          else if(td->getCord(i-1,j)=='2') {
+            num = 100;
+          }//inARow[1]+=i;
+          return num;
+        }
+        if(i>= 2 && i <= rowSize-2 && td->getCord(i-2,j)==td->getCord(i-1,j)&&td->getCord(i-1,j)==td->getCord(i+1,j)){
+          if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i-2,j)=='1'){
+            num = -100;
+          }
+          else if(td->getCord(i-2,j)=='2'){
+            num = 100;
+          } //inARow[1]+=i;
+          return num;
+        }
+        if(i>= 3 && i <= rowSize-1 && td->getCord(i-3,j)==td->getCord(i-2,j)&&td->getCord(i-2,j)==td->getCord(i-1,j)){
+          if(potentialLcheck>=10)cout<<"V4: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i-3,j)=='1'){
+            num = -100;
+          }
+          else if(td->getCord(i-3,j)=='2') {
+            num = 100;
+          } //inARow[1]+=i;
+          return num;
+        }
+
         // Check Horizontal
         // 0 x x x
         if(j>=0 && j <= colSize-4 && td->getCord(i,j+1)==td->getCord(i,j+2)&&td->getCord(i,j+2)==td->getCord(i,j+3)){
-          if(td->getCord(i,j+1)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j+1)=='2') inARow[0]+=i;
+          if(potentialLcheck>=10)cout<<"H1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i,j+1)=='1'){
+            if(i==nextRowUp(i)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[1]+=i;
+            }
+          }
+          else if(td->getCord(i,j+1)=='2'){
+            if(i==nextRowUp(i)){
+              num = 100; // inARow[0]+=i;
+              return num;
+            }
+            else{
+              inARow[1]+=i;
+            }
+          }
         }
         // x 0 x x
         if(j>=1 && j <= colSize-3 && td->getCord(i,j-1)==td->getCord(i,j+1)&&td->getCord(i,j+1)==td->getCord(i,j+2)){
-          if(td->getCord(i,j-1)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j-1)=='2') inARow[0]+=i;
+          if(potentialLcheck>=10)cout<<"H2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i,j-1)=='1'){
+            if(i==nextRowUp(i)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[1]+=i;
+            }
+          }
+          else if(td->getCord(i,j-1)=='2'){
+            if(i==nextRowUp(i)){
+              num = 100; // inARow[0]+=i;
+              return num;
+            }
+            else{
+              inARow[1]+=i;
+            }
+          }
         }
         // x x 0 x
         if(j>=2 && j <= colSize-2 && td->getCord(i,j-2)==td->getCord(i,j-1)&&td->getCord(i,j-1)==td->getCord(i,j+1)){
-          if(td->getCord(i,j-2)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j-2)=='2') inARow[0]+=i;
+          if(potentialLcheck>=10)cout<<"H3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i,j-2)=='1'){
+            if(i==nextRowUp(i)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[1]+=i;
+            }
+          }
+          else if(td->getCord(i,j-2)=='2'){
+            if(i==nextRowUp(i)){
+              num = 100; // inARow[0]+=i;
+              return num;
+            }
+            else{
+              inARow[1]+=i;
+            }
+          }
         }
         // x x x 0
         if(j>=3 && j <= colSize-1 && td->getCord(i,j-3)==td->getCord(i,j-2)&&td->getCord(i,j-2)==td->getCord(i,j-1)){
-          if(td->getCord(i,j-3)=='1') inARowOpponent[0]+=i;
-          else if(td->getCord(i,j-3)=='2') inARow[0]+=i;
+          if(potentialLcheck>=10)cout<<"H4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+          if(td->getCord(i,j-3)=='1'){
+            if(i==nextRowUp(i)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[1]+=i;
+            }
+          }
+          else if(td->getCord(i,j-3)=='2'){
+            if(i==nextRowUp(i)){
+              num = 100; // inARow[0]+=i;
+              return num;
+            }
+            else{
+              inARow[1]+=i;
+            }
+          }
         }
 
-        // Check Vertical
-        if(i>= 0 && i <= rowSize-4 && td->getCord(i+1,j)==td->getCord(i+2,j)&&td->getCord(i+2,j)==td->getCord(i+3,j)){
-          if(td->getCord(i+1,j)=='1'){
-            if(potentialLcheck>=10)cout<<"V1: Found a potential loss(vertical)!!!"<<i<<j<<endl<<*td<<endl;
-            num = -100;
-            return num;
-          }
-          else if(td->getCord(i+1,j)=='2') inARow[1]+=i;
-
-        }
-        if(i>= 1 && i <= rowSize-3 && td->getCord(i-1,j)==td->getCord(i+1,j)&&td->getCord(i+1,j)==td->getCord(i+2,j)){
-          if(td->getCord(i-1,j)=='1'){
-            if(potentialLcheck>=10)cout<<"V2: Found a potential loss(vertical)!!!"<<i<<j<<endl<<*td<<endl;
-            num = -100;
-            return num;
-          }
-          else if(td->getCord(i-1,j)=='2') inARow[1]+=i;
-        }
-        if(i>= 2 && i <= rowSize-2 && td->getCord(i-2,j)==td->getCord(i-1,j)&&td->getCord(i-1,j)==td->getCord(i+1,j)){
-          if(td->getCord(i-2,j)=='1'){
-            if(potentialLcheck>=10)cout<<"V3: Found a potential loss(vertical)!!!"<<i<<j<<endl<<*td<<endl;
-            num = -100;
-            return num;
-          }
-          else if(td->getCord(i-2,j)=='2') inARow[1]+=i;
-        }
-        if(i>= 3 && i <= rowSize-1 && td->getCord(i-3,j)==td->getCord(i-2,j)&&td->getCord(i-2,j)==td->getCord(i-1,j)){
-          if(td->getCord(i-3,j)=='1'){
-            if(potentialLcheck>=10)cout<<"V4: Found a potential loss(vertical)!!!"<<i<<j<<endl<<*td<<endl;
-            num = -100;
-            return -100;
-          }
-          else if(td->getCord(i-3,j)=='2') inARow[1]+=i;
-        }
         // Check for (Descending) Diagonal
         if(j>= 0 && j <= colSize-4 && i >= 0 && i <= rowSize-4 && td->getCord(i+1,j+1)==td->getCord(i+2,j+2)&&td->getCord(i+2,j+2)==td->getCord(i+3,j+3)){
-          if(td->getCord(i+1,j+1)=='1') inARowOpponent[2]+=i;
-          else if(td->getCord(i+1,j+1)=='2') inARow[2]+=i;
           /*
           0 0 0 0
           0 x 0 0
           0 0 x 0
           0 0 0 x
           */
+          if(td->getCord(i+1,j+1)=='1'){
+            inARowOpponent[2]+=i;
+          }
+          else if(td->getCord(i+1,j+1)=='2'){
+            inARow[2]+=i;
+          }
+
+
         }
         if(j>= 1 && j <= colSize-3 && i >= 1 && i <= rowSize-3 && td->getCord(i-1,j-1)==td->getCord(i+1,j+1)&&td->getCord(i+1,j+1)==td->getCord(i+2,j+2)){
           if(td->getCord(i-1,j-1)=='1') inARowOpponent[2]+=i;
