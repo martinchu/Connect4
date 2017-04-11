@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 //Xwindow * theWindow;
-int gtest=100;
-int memgtest=100;
+int gtest=0;
+int memgtest=0;
 int testTotalCheckers = 0;
 int Grid::getColumnChecker(int targetcol)const{
   return CheckersCounter[targetcol];

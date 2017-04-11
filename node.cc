@@ -13,7 +13,7 @@ int potentialLcheck =10;
 int abtest = 100;
 
 int Node::nextRowUp(int row){
-  return g->getrowSize()-g->getColumnChecker(row)-1;
+  return state->getrowSize()-state->getColumnChecker(row)-1;
 }
 
 int Node::findPotentialWin(){
@@ -45,52 +45,60 @@ int Node::findPotentialWin(){
 
         // Check Vertical First. The Vertical Win is the most imminent
         if(i>= 0 && i <= rowSize-4 && td->getCord(i+1,j)==td->getCord(i+2,j)&&td->getCord(i+2,j)==td->getCord(i+3,j)){
-          if(potentialLcheck>=10)cout<<"V1: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i+1,j)=='1'){
+            if(potentialLcheck>=10)cout<<"V1: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = -100;
+            return num;
           }
           else if(td->getCord(i+1,j)=='2'){
-            num = 100
+            if(potentialLcheck>=10)cout<<"V1: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
+            num = 100;
+            return num;
           } //inARow[1]+=i;
-          return num;
         }
         if(i>= 1 && i <= rowSize-3 && td->getCord(i-1,j)==td->getCord(i+1,j)&&td->getCord(i+1,j)==td->getCord(i+2,j)){
-          if(potentialLcheck>=10)cout<<"V2: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i-1,j)=='1'){
+            if(potentialLcheck>=10)cout<<"V2: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = -100;
+            return num;
           }
           else if(td->getCord(i-1,j)=='2') {
+            if(potentialLcheck>=10)cout<<"V2: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = 100;
-          }//inARow[1]+=i;
-          return num;
+            return num;
+          } //inARow[1]+=i;
         }
         if(i>= 2 && i <= rowSize-2 && td->getCord(i-2,j)==td->getCord(i-1,j)&&td->getCord(i-1,j)==td->getCord(i+1,j)){
-          if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i-2,j)=='1'){
+            if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = -100;
+            return num;
           }
           else if(td->getCord(i-2,j)=='2'){
+            if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = 100;
+            return num;
           } //inARow[1]+=i;
-          return num;
         }
         if(i>= 3 && i <= rowSize-1 && td->getCord(i-3,j)==td->getCord(i-2,j)&&td->getCord(i-2,j)==td->getCord(i-1,j)){
-          if(potentialLcheck>=10)cout<<"V4: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i-3,j)=='1'){
+            if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = -100;
+            return num;
           }
           else if(td->getCord(i-3,j)=='2') {
+            if(potentialLcheck>=10)cout<<"V3: Found a potential WL!!!"<<i<<j<<endl<<*td<<endl;
             num = 100;
+            return num;
           } //inARow[1]+=i;
-          return num;
         }
 
         // Check Horizontal
         // 0 x x x
         if(j>=0 && j <= colSize-4 && td->getCord(i,j+1)==td->getCord(i,j+2)&&td->getCord(i,j+2)==td->getCord(i,j+3)){
-          if(potentialLcheck>=10)cout<<"H1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i,j+1)=='1'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = -100;
               return num;
             }
@@ -99,7 +107,8 @@ int Node::findPotentialWin(){
             }
           }
           else if(td->getCord(i,j+1)=='2'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = 100; // inARow[0]+=i;
               return num;
             }
@@ -110,9 +119,9 @@ int Node::findPotentialWin(){
         }
         // x 0 x x
         if(j>=1 && j <= colSize-3 && td->getCord(i,j-1)==td->getCord(i,j+1)&&td->getCord(i,j+1)==td->getCord(i,j+2)){
-          if(potentialLcheck>=10)cout<<"H2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i,j-1)=='1'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = -100;
               return num;
             }
@@ -121,7 +130,8 @@ int Node::findPotentialWin(){
             }
           }
           else if(td->getCord(i,j-1)=='2'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = 100; // inARow[0]+=i;
               return num;
             }
@@ -132,9 +142,9 @@ int Node::findPotentialWin(){
         }
         // x x 0 x
         if(j>=2 && j <= colSize-2 && td->getCord(i,j-2)==td->getCord(i,j-1)&&td->getCord(i,j-1)==td->getCord(i,j+1)){
-          if(potentialLcheck>=10)cout<<"H3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i,j-2)=='1'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = -100;
               return num;
             }
@@ -143,7 +153,8 @@ int Node::findPotentialWin(){
             }
           }
           else if(td->getCord(i,j-2)=='2'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = 100; // inARow[0]+=i;
               return num;
             }
@@ -154,9 +165,9 @@ int Node::findPotentialWin(){
         }
         // x x x 0
         if(j>=3 && j <= colSize-1 && td->getCord(i,j-3)==td->getCord(i,j-2)&&td->getCord(i,j-2)==td->getCord(i,j-1)){
-          if(potentialLcheck>=10)cout<<"H4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
           if(td->getCord(i,j-3)=='1'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = -100;
               return num;
             }
@@ -165,7 +176,8 @@ int Node::findPotentialWin(){
             }
           }
           else if(td->getCord(i,j-3)=='2'){
-            if(i==nextRowUp(i)){
+            if(potentialLcheck>=10)cout<<"H4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
               num = 100; // inARow[0]+=i;
               return num;
             }
@@ -184,43 +196,114 @@ int Node::findPotentialWin(){
           0 0 0 x
           */
           if(td->getCord(i+1,j+1)=='1'){
-            inARowOpponent[2]+=i;
+            if(potentialLcheck>=10)cout<<"D1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[2]+=i;
+            }
           }
           else if(td->getCord(i+1,j+1)=='2'){
-            inARow[2]+=i;
+            if(potentialLcheck>=10)cout<<"D1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else {
+              inARow[2]+=i;
+            }
           }
-
-
         }
         if(j>= 1 && j <= colSize-3 && i >= 1 && i <= rowSize-3 && td->getCord(i-1,j-1)==td->getCord(i+1,j+1)&&td->getCord(i+1,j+1)==td->getCord(i+2,j+2)){
-          if(td->getCord(i-1,j-1)=='1') inARowOpponent[2]+=i;
-          else if(td->getCord(i-1,j-1)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 0 0 0
           0 0 x 0
           0 0 0 x
           */
+          if(td->getCord(i-1,j-1)=='1'){
+            if(potentialLcheck>=10)cout<<"D2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[2]+=i;
+            }
+          }
+          else if(td->getCord(i-1,j-1)=='2'){
+            if(potentialLcheck>=10)cout<<"D2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[2]+=i;
+            }
+          }
+
         }
         if(j>= 2 && j <= colSize-2 && i >= 2 && i <= rowSize-2 && td->getCord(i-2,j-2)==td->getCord(i-1,j-1)&&td->getCord(i-1,j-1)==td->getCord(i+1,j+1)){
-          if(td->getCord(i-2,j-2)=='1') inARowOpponent[2]+=i;
-          else if(td->getCord(i-2,j-2)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 x 0 0
           0 0 0 0
           0 0 0 x
           */
+          if(td->getCord(i-2,j-2)=='1'){
+            if(potentialLcheck>=10)cout<<"D3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[2]+=i;
+            }
+          }
+          else if(td->getCord(i-2,j-2)=='2'){
+            if(potentialLcheck>=10)cout<<"D3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[2]+=i;
+            }
+          }
         }
         if(j>= 3 && j <= colSize-1 && i >= 3 && i <= rowSize-1 && td->getCord(i-3,j-3)==td->getCord(i-2,j-2)&&td->getCord(i-2,j-2)==td->getCord(i-1,j-1)){
-          if(td->getCord(i-3,j-3)=='1') inARowOpponent[2]+=i;
-          else if(td->getCord(i-3,j-3)=='2') inARow[2]+=i;
           /*
           x 0 0 0
           0 x 0 0
           0 0 x 0
           0 0 0 0
           */
+          if(td->getCord(i-3,j-3)=='1'){
+            if(potentialLcheck>=10)cout<<"D4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[2]+=i;
+            }
+          }
+          else if(td->getCord(i-3,j-3)=='2'){
+            if(potentialLcheck>=10)cout<<"D4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[2]+=i;
+            }
+          }
         }
         if(j>= 0 && j <= colSize-4 && i >= 3 && i <= rowSize-1 && td->getCord(i-1,j+1)==td->getCord(i-2,j+2)&&td->getCord(i-2,j+2)==td->getCord(i-3,j+3)){
           /*
@@ -229,9 +312,27 @@ int Node::findPotentialWin(){
           0 x 0 0
           0 0 0 0
           */
-          if(td->getCord(i-1,j+1)=='1') inARowOpponent[2]+=i;
-          else if(td->getCord(i-1,j+1)=='2') inARow[2]+=i;
+          if(td->getCord(i-1,j+1)=='1') {
+            if(potentialLcheck>=10)cout<<"A1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[3]+=i;
+            }
+          }
+          else if(td->getCord(i-1,j+1)=='2'){
+            if(potentialLcheck>=10)cout<<"A1: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
 
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[2]+=i;
+            }
+          }
         }
         if(j>= 1 && j <= colSize-3 && i >= 2 && i <= rowSize-2 && td->getCord(i+1,j-1)==td->getCord(i-1,j+1)&&td->getCord(i-1,j+1)==td->getCord(i-2,j+2)){
           /*
@@ -242,8 +343,28 @@ int Node::findPotentialWin(){
           5 0 0 0 0
           6 x 0 0 0
           */
-          if(td->getCord(i+1,j-1)=='1') inARowOpponent[3]+=i;
-          else if(td->getCord(i+1,j-1)=='2') inARow[3]+=i;
+          if(td->getCord(i+1,j-1)=='1'){
+            if(potentialLcheck>=10)cout<<"A2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[3]+=i;
+            }
+          }
+          else if(td->getCord(i+1,j-1)=='2'){
+            if(potentialLcheck>=10)cout<<"A2: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[3]+=i;
+            }
+          }
         }
         if(j>= 2 && j <= colSize-2 && i >= 1 && i <= rowSize-3 && td->getCord(i+2,j-2)==td->getCord(i+1,j-1)&&td->getCord(i+1,j-1)==td->getCord(i-1,j+1)){
           /*
@@ -254,9 +375,29 @@ int Node::findPotentialWin(){
           5 0 x 0 0
           6 x 0 0 0
           */
-          if(td->getCord(i+2,j-2)=='1') inARowOpponent[3]+=i;
-          else if(td->getCord(i+2,j-2)=='2') inARow[3]+=i;
+          if(td->getCord(i+2,j-2)=='1') {
+            if(potentialLcheck>=10)cout<<"A3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
 
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[3]+=i;
+            }
+
+          }
+          else if(td->getCord(i+2,j-2)=='2'){
+            if(potentialLcheck>=10)cout<<"A3: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[3]+=i;
+            }
+          }
         }
         if(j >= 3 && j <= colSize-1 && i >=0 && i <= rowSize-4 && td->getCord(i+1,j-1)==td->getCord(i+2,j-2)&&td->getCord(i+2,j-2)==td->getCord(i+3,j-3)){
           /*
@@ -267,16 +408,29 @@ int Node::findPotentialWin(){
           5 0 x 0 0
           6 x 0 0 0
           */
-          if(td->getCord(i+1,j-1)=='1') inARowOpponent[3]+=i;
-          else if(td->getCord(i+1,j-1)=='2') inARow[3]+=i;
+          if(td->getCord(i+1,j-1)=='1'){
+            if(potentialLcheck>=10)cout<<"A4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
 
+            if(i==nextRowUp(j)){
+              num = -100;
+              return num;
+            }
+            else{
+              inARowOpponent[3]+=i;
+            }
+          }
+          else if(td->getCord(i+1,j-1)=='2'){
+            if(potentialLcheck>=10)cout<<"A4: Found a potential WL!!! "<<i<<j<<endl<<*td<<endl;
+            if(i==nextRowUp(j)){
+              num = 100;
+              return num;
+            }
+            else{
+              inARow[3]+=i;
+            }
+          }
         }
       }
-    }
-  }
-  if(ntest>1000){
-    for(int i=0;i<4;i++){
-      cout<< "inARow "<<i<<": "<<inARow[i]<<endl;
     }
   }
   int value =(100* (inARow[0] + inARow[1] + inARow[2] + inARow[3]) )/16 - (100* (inARowOpponent[0] + inARowOpponent[1] + inARowOpponent[2] + inARowOpponent[3]) )/16;
@@ -433,4 +587,5 @@ Node::~Node(){
   for(unsigned int i = 0; i< children.size();i++){
     delete children[i];
   }
+  delete state;
 }

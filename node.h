@@ -16,7 +16,6 @@ class Node {
   int evalBoard();
   int findPotentialWin();
   int potential4();
-
   string id;
 public:
   Node(Grid *g);
@@ -24,6 +23,7 @@ public:
   Node(int n);
   Node(vector<Node *>c);
   void setID(string s);
+  int nextRowUp(int col);
   string getID() const;
   void updateRoute(int r);
   int getRoute() const;

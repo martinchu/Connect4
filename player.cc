@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int ptest = 100;
+int ptest = 1;
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
 }
@@ -121,7 +121,7 @@ int AI::makeMove(bool p1){
 
     futureStates->alphabeta(INT_MIN,INT_MAX,true,3);
     int choice = futureStates->getRoute();
-    if(ptest>=10)cout<<"Minimax & AlphaBeta done. choice: "<<choice<<endl;
+    if(ptest>=1)cout<<"Minimax & AlphaBeta done. choice: "<<choice<<endl;
     if(choice ==-1){
       choice = randDrop();
     }
@@ -135,7 +135,7 @@ int AI::makeMove(bool p1){
 }
 
 AI::~AI(){
-
+  // delete
 }
 Human::~Human(){
 
