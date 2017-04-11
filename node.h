@@ -9,18 +9,22 @@ class Grid;
 
 class Node {
   Grid* state;
+  int route;
   int num;
   vector<Node *> children;
-  // string id;
+  string id;
 public:
   Node(Grid *g);
   Node();
+  Node(int n);
   Node(vector<Node *>c);
+  void updateRoute(int r);
+  int getRoute() const;
   Grid* getState()const;
-  // void setID(string s);
-  // string getID();
+  void setID(string s);
+  string getID() const;
   int height;
-  int getValue();
+  int getValue() const;
   void setValue(int v);
   void setChildren(vector<Node *>c);
   const int getChildrenSize();

@@ -81,12 +81,14 @@ int main(){
 	cout<<"Load Game?(Y/N)";
 	cin>>s;
 	if(s =="Y"||s=="y"){
-		cout<<"please insert file name."<<endl;
-		string inf;
-		cin>>inf;
-		ifstream infile(inf.c_str());
-		setGrid(infile,g);
+		return -1;
+		// cout<<"please insert file name."<<endl;
+		// string inf;
+		// cin>>inf;
+		// ifstream infile(inf.c_str());
+		// setGrid(infile,g);
 	}
+	cout<<(*g)<<endl;
 	bool p1turn = true;
 	while(true){
 		if(mtest==1000)cout<<"g->getWinner(): "<<g->getWinner()<<endl;

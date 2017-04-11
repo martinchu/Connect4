@@ -1,6 +1,5 @@
-# Connect4 (Text Version)
+# Connect 4 Artifical Intelligence(Text Version)
 
-## Description
 This program is modelled after Connect 4, a two-player connection game in which the players first choose a color and then take turns dropping colored discs from the top into a seven-column, six-row vertically suspended grid.
 
 - The pieces fall straight down, occupying the next available space within the column.
@@ -11,11 +10,13 @@ The Target of the Aritifical Intelligence is win at least 60%. The Aritifical In
 
 The AI has to simulate the future states by creating a tree of all possible scenarios. The height of the tree will depend on how many steps AI will be looking ahead. If the AI is going to 2 steps ahead (provided the opponent will not win in the next move regardless), it is going to generate 7^2 = 49 future states.
 
-To tak computational cost and time complexity into account, the default IQ parameter for the AI is 3. i.e. AI will be looking 3 steps ahead when it decides to make a move.
+To tak computational cost and time complexity into account, the default IQ parameter for the AI is 3. i.e. AI will be looking 3 steps ahead when it decides to make a move. A set of heurisitic functions are put in place to make sure the place the
 
-Some
+Some decisions are made in order to speed up the runtime of AI. For example, AI is always dropping the first checker to the middle column. Research has supported that it is the best move.
 
-The project is a original project[^1]. No codes have been copied.
+Again, IQ of AI is set to 3 in order to keep the AI fast without always losing. It can be changed in the source code as it is one of the parameters of the AI contructor when it is called.
+
+The project is a original project. No codes have been copied. The project has taken inspirations by the list of sources on the reference list and previous projects that I have worked on. All the codes (excludes the libraries) are coded by myself.
 
 ## Installation
 
@@ -68,7 +69,7 @@ The project is well-structured. All the items have applied a lot of OOP theories
 However, the current drawbacks are:
 
 1. It does not live on the web at the moment.
-2. Windows (Vista/7/8) users might have a tough to boot the game up.
+2. Windows (Vista/7/8) users might have a tough time to boot the game up.
 3. GUI is not integrated yet.
 
 ## Reference
@@ -81,5 +82,3 @@ However, the current drawbacks are:
 - Also, if you are into pretty User Interface, check out [__MyPersonalWebsite__](martinchu.xyz). It is constantly updating with new features and contents.
 
 Created by Martin Chu in April 2017
-
-[^1]: The project is taken inspirations by the list of sources on the reference list and previous projects that I have worked on. All the codes (excludes the libraries) are coded by myself.

@@ -119,7 +119,7 @@ ostream &operator<<(ostream &out, const Grid &g){
   if(gtest>=100){
     cout<<"1 2 3 4 5 6 7"<<endl;
     for(int i=0;i<g.colSize;i++){
-      cout<<g.CheckersCounter[i];
+      cout<<g.CheckersCounter[i]<<" ";
     }
     cout<<endl;
   }
@@ -148,8 +148,7 @@ Grid::Grid(const Grid &g){
   p1 = g.p1;
   p2 = g.p2;
   if(gtest>=1000){
-    cout<<"IN GRID COPY CONSTRUCTOR"<<endl;
-    cout<<"NEW Grid: "<<&theGrid<<"\tOLD Grid: "<<&g.theGrid<<endl;
+    cout<<"IN GRID COPY CONSTRUCTOR"<<endl<<"NEW Grid: "<<&theGrid<<"\tOLD Grid: "<<&g.theGrid<<endl;
     cout<<"NEW rowSize: "<<rowSize<<"\tNEW colSize: "<<colSize<<endl;
     cout<<"NEW TD: "<<td<<"\tOLD TD: "<<&g.td<<endl;
   }
