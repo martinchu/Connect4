@@ -7,7 +7,7 @@ using namespace std;
 int gtest=100;
 int memgtest=100;
 int testTotalCheckers = 0;
-int Grid::getColumnChecker(int targetcol){
+int Grid::getColumnChecker(int targetcol)const{
   return CheckersCounter[targetcol];
 }
 void Grid::init(int r, int c, int state){
@@ -117,7 +117,7 @@ ostream &operator<<(ostream &out, const Grid &g){
   }
   out<<*(g.td);
   if(gtest>=100){
-    cout<<"1 2 3 4 5 6 7"<<endl;
+    cout<<"colcnt: 1 2 3 4 5 6 7"<<endl<<"        ";
     for(int i=0;i<g.colSize;i++){
       cout<<g.CheckersCounter[i]<<" ";
     }
@@ -135,12 +135,13 @@ Grid::Grid(const Grid &g){
     theGrid[q]=new Cell[g.colSize];
   }
   td= new TextDisplay(g.rowSize,g.colSize);
-  for(int row=0;row<g.rowSize;row++){
-    for(int col=0;col<g.colSize;col++){
+  for(int col=0;col<g.colSize;col++){
+    for(int row=0;row<g.rowSize;row++){
       theGrid[row][col].setDisplay(td);
       theGrid[row][col].setCoords(row,col);
       theGrid[row][col].notify(g.theGrid[row][col].getState());
     }
+    CheckersCounter[col] = g.getColumnChecker(col);
   }
   rowSize = g.rowSize;
   colSize = g.colSize;

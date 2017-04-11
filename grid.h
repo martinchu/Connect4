@@ -28,7 +28,7 @@ class Grid {
   int getrowSize();
   int getcolSize();
   int getCheckers();
-  int getColumnChecker(int targetcol);
+  int getColumnChecker(int targetcol)const;
   void init();                 // Sets up an n x n grid.  Clears old grid, if necessary.
   void change(const int & state);  // Notify Cell (0,0) of the change to new state: state
   void init(int r, int c, int state); //set the state for r,c to state
