@@ -12,23 +12,29 @@ class Node {
   int route;
   int num;
   vector<Node *> children;
+  int heuristic();
+  int evalBoard();
+  int findPotentialWin();
+  int potential4();
+
   string id;
 public:
   Node(Grid *g);
   Node();
   Node(int n);
   Node(vector<Node *>c);
+  void setID(string s);
+  string getID() const;
   void updateRoute(int r);
   int getRoute() const;
   Grid* getState()const;
-  void setID(string s);
-  string getID() const;
-  int height;
   int getValue() const;
   void setValue(int v);
+  Node* getChildren(int i);
   void setChildren(vector<Node *>c);
   const int getChildrenSize();
-  Node* getChildren(int i);
+  int alphabeta(int alpha, int beta, bool MAXPLAYER, int depth);
+  int height;
   friend std::ostream &operator<<(std::ostream &out, const Node &n);
   ~Node();
 };
