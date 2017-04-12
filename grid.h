@@ -18,7 +18,7 @@ class Grid {
   //Xwindow * theWindow;
   void clearGrid();                 // Frees the theGrid field.
  public:
-  Grid();
+  Grid(int row, int col);
   Grid(const Grid &g); //COPY Constructor
   ~Grid();
   bool isFilled();

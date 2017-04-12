@@ -50,7 +50,7 @@ int Grid::getcolSize(){
 TextDisplay* Grid::getTextDisplay(){
   return td;
 }
-Grid::Grid():theGrid(0),rowSize(6),colSize(7),checkers(0){}
+Grid::Grid(int row, int col):theGrid(0),rowSize(row),colSize(col),checkers(0){}
 Grid::~Grid(){
   this->clearGrid();
 }
@@ -61,8 +61,8 @@ char Grid::getWinner(){
   return td->TextDisplay::getWinner();
 }
 void Grid::init(){
-  int grow = 6;
-  int gcol = 7;
+  int grow = rowSize;
+  int gcol = colSize;
   if(gtest>=1000) cout<<"theGrid: "<<theGrid<<endl;
   // if(!theGrid){
   //   clearGrid();

@@ -34,7 +34,9 @@ int main(){
 	// bool gaming=false;
 	Grid *g;
 	string s;
-	g= new Grid();
+	int row = 6;
+	int col = 7;
+	g= new Grid(row, col);
 	g->init();
 	cout<<"Welcome to Connect4. Type 1 or 2 to choose your mode:"<<endl;
 	cout<<"1: Play with another Player"<<endl;
