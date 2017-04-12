@@ -19,7 +19,7 @@ class Grid {
   void clearGrid();                 // Frees the theGrid field.
  public:
   Grid();
-  Grid(const Grid &g);
+  Grid(const Grid &g); //COPY Constructor
   ~Grid();
   bool isFilled();
   char getWinner();

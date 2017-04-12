@@ -79,7 +79,7 @@ Node* AI::lookAhead(Node* n,int steps, bool humanMove){
       }
     }
     n->setChildren(tempc);
-    if(ptest>=1000)cout<<*n;
+    // if(ptest>=1000)cout<<*n;
     return n;
   }
   return 0;
@@ -113,21 +113,21 @@ int AI::makeMove(bool p1){
   else{
     cout<<"Calculating... Please Wait..."<<endl;
     if(ptest>=100)cout<<"looking "<<IQ<<" steps ahead"<<endl;
-    Node *futureStates = new Node(g);
-    futureStates = lookAhead(futureStates,IQ,false);
+    Grid* temp = new Grid(*g);
+    decisionTree = new Node(temp);
+    decisionTree = lookAhead(decisionTree,IQ,false);
     //look certains steps ahead, depending on IQ of the AI
     // next Step is an AI move
-    if(ptest>=10)cout<<"Lookahead done."<<*futureStates<<endl;
+    if(ptest>=10)cout<<"Lookahead done."<<*decisionTree<<endl;
 
-    futureStates->alphabeta(INT_MIN,INT_MAX,true,3);
-    int choice = futureStates->getRoute();
+    decisionTree->alphabeta(INT_MIN,INT_MAX,true,3);
+    int choice = decisionTree->getRoute();
     if(ptest>=1)cout<<"Minimax & AlphaBeta done. choice: "<<choice<<endl;
-    if(choice ==-1){
-      choice = randDrop();
-    }
+    if(choice ==-1)choice = randDrop();
     Player::g->dropChecker(choice,false);
     // Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
-    delete futureStates;
+    if(ptest>=100)cout<<"deleting future states now... "<<decisionTree<<endl;
+    delete decisionTree;
     // deleting the futureStates;
     // Note: it might add time complexity, will figure out a way to keep some states
     return 1;
@@ -136,6 +136,7 @@ int AI::makeMove(bool p1){
 
 AI::~AI(){
   // delete
+  // if(decisionTree != NULL) delete decisionTree;
 }
 Human::~Human(){
 

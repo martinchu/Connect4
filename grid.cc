@@ -72,12 +72,14 @@ void Grid::init(){
     theGrid[q]=new Cell[gcol];
   }
   td= new TextDisplay(grow,gcol);
-  for(int row=0;row<grow;row++){
-    for(int col=0;col<gcol;col++){
+  for(int col=0;col<gcol;col++){
+    for(int row=0;row<grow;row++){
       theGrid[row][col].setDisplay(td);
       theGrid[row][col].setCoords(row,col);
     }
+    CheckersCounter[col] = 0;
   }
+
 }
 // Sets up an n x n grid.  Clears old grid, if necessary.
 void Grid::change(const int & state){
@@ -134,7 +136,7 @@ Grid::Grid(const Grid &g){
   for(int q=0;q<g.rowSize;q++){
     theGrid[q]=new Cell[g.colSize];
   }
-  td= new TextDisplay(g.rowSize,g.colSize);
+  td = new TextDisplay(g.rowSize,g.colSize);
   for(int col=0;col<g.colSize;col++){
     for(int row=0;row<g.rowSize;row++){
       theGrid[row][col].setDisplay(td);

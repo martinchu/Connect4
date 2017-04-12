@@ -7,7 +7,7 @@ class TextDisplay {
   char **theDisplay;          //the n x n display
   const int rowSize;          //number of rows
   const int colSize;          //number of columns
-  unsigned int colourCount[2];
+  unsigned int colourCount[2]; //FLAG
  public:
   TextDisplay(int row, int col); //one arg constructor where the parameter is the gridSize
   TextDisplay(const TextDisplay& oldtd);

@@ -8,9 +8,9 @@
 #include <cmath>
 
 using namespace std;
-int ntest = 1000;
-int potentialLcheck =10;
-int abtest = 100;
+int ntest = 0;
+int potentialLcheck = 0;
+int abtest = 0;
 
 int Node::nextRowUp(int row){
   return state->getrowSize()-state->getColumnChecker(row)-1;
@@ -496,7 +496,7 @@ int Node::alphabeta(int alpha, int beta, bool MAXPLAYER, int depth){
         int ab = children[i]->alphabeta(alpha,beta,false,depth-1);
         if(ab>num){
           route = i;
-          cout<<"Route Updated. Route: "<<route<<endl;
+          if(ntest>=10)cout<<"Route Updated. Route: "<<route<<endl;
           num = ab;
         }
         alpha = max(alpha, ab);
@@ -510,7 +510,7 @@ int Node::alphabeta(int alpha, int beta, bool MAXPLAYER, int depth){
         int ab = children[i]->alphabeta(alpha, beta, true,depth-1);
         if(ab<num){
           route = i;
-          cout<<"Route Updated. Route: "<<route<<endl;
+          if(ntest>=10)cout<<"Route Updated. Route: "<<route<<endl;
           num = ab;
         }
         beta = min(beta, ab);
@@ -585,7 +585,9 @@ void Node::setID(string s){
 }
 Node::~Node(){
   for(unsigned int i = 0; i< children.size();i++){
+    if(ntest>0)cout <<"deleting node children"<<i<<endl;
     delete children[i];
   }
+  if(ntest>0)cout <<"deleting state"<<endl;
   delete state;
 }

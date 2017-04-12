@@ -28,27 +28,16 @@ TextDisplay::TextDisplay(int r, int c):rowSize(r),colSize(c){
 	for(int j=0;j<rowSize;j++){
 		for(int k=0;k<colSize;k++){
 			theDisplay[j][k]='0';
-			// cout<<theDisplay[j][k];
 		}
-		// cout<<endl;
 	}
-	/*for(int a=0;a<gridSize;a++){
-	for(int b=0;b<gridSize;b++){
-	cout<<theDisplay[a][b];
-}
-cout<<endl;
-}
-if(this->theDisplay==0){
-cout<<"theDisplay is not null after the loop"<<endl;
-}*/
-// cout<<(*this);
 }
 void TextDisplay::notify(int r, int c, char ch){
 	if(ttest>=10){
 		cout<<"ch: "<<ch<<endl;
 	}
 	theDisplay[r][c]=ch;
-	colourCount[ch-'0']++;
+	// colourCount[ch-'1']++;
+	// ^ this line is no longer useful. commented out at the moment
 }
 bool TextDisplay::isFilled(){
 	for(int i=0;i<colSize;i++){

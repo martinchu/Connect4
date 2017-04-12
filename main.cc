@@ -12,7 +12,7 @@ using namespace std;
 int moves=0;
 int mtest=0;
 int gsize=0;
-int memtest = 100;
+int memtest = 0;
 
 void setGrid(istream &in, Grid *g){
 	if(mtest>=50)cout<<"in setGridColor"<<endl;
@@ -78,17 +78,17 @@ int main(){
 		cout<<"check Player 2: "<<endl;
 		p2->checkHuman();
 	}
-	cout<<"Load Game?(Y/N)";
-	cin>>s;
-	if(s =="Y"||s=="y"){
-		return -1;
-		// cout<<"please insert file name."<<endl;
-		// string inf;
-		// cin>>inf;
-		// ifstream infile(inf.c_str());
-		// setGrid(infile,g);
-	}
-	cout<<(*g)<<endl;
+	// cout<<"Load Game?(Y/N)";
+	// cin>>s;
+	// if--track-origins=yes (s =="Y"||s=="y"){
+	// 	return -1;
+	// 	// cout<<"please insert file name."<<endl;
+	// 	// string inf;
+	// 	// cin>>inf;
+	// 	// ifstream infile(inf.c_str());
+	// 	// setGrid(infile,g);
+	// }
+	cout<<(*g);
 	bool p1turn = true;
 	while(true){
 		if(mtest==1000)cout<<"g->getWinner(): "<<g->getWinner()<<endl;
@@ -112,6 +112,7 @@ int main(){
 		}
 	}
 	if(memtest>=100)cout<<"deleting grid"<<endl;
+	delete g;
 	delete h1;
 	delete h2;
 	delete ai;

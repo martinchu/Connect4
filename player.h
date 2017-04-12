@@ -22,6 +22,7 @@ class AI: public Player{
   Node* lookAhead(Node* n, int steps,bool humanMove);
   int randDrop();
   const int IQ;
+  Node * decisionTree;
 public:
   void checkHuman();
   int makeMove(bool p1);
