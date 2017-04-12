@@ -58,7 +58,7 @@ int main(){
 	}
 	Human *h1 = new Human(g);
 	Human *h2 = new Human(g);
-	int intelligence = 3;
+	int intelligence = 4;
 	// determine how smart the AI will be.
 	AI *ai = new AI(g,intelligence);
 	Player * p1 = h1;

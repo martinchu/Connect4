@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int ptest = 1;
+int ptest = 0;
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
 }
