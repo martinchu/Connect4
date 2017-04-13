@@ -10,7 +10,7 @@ The Target of the Aritifical Intelligence is win at least 60%. The Aritifical In
 
 The AI has to simulate the future states by creating a tree of all possible scenarios. The height of the tree will depend on how many steps AI will be looking ahead. If the AI is going to 2 steps ahead (provided the opponent will not win in the next move regardless), it is going to generate 7^2 = 49 future states.
 
-To tak computational cost and time complexity into account, the default IQ parameter for the AI is 3. i.e. AI will be looking 3 steps ahead when it decides to make a move. A set of heurisitic functions are put in place to make sure the place the
+To take computational cost and time complexity into account, the default IQ parameter for the AI is 6. i.e. AI will be looking 6 steps ahead when it decides to make a move. A set of heurisitic functions are put in place to make sure AI is evaluating the states accurately.
 
 Some decisions are made in order to speed up the runtime of AI. For example, AI is always dropping the first checker to the middle column. Research has supported that it is the best move.
 
