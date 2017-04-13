@@ -20,13 +20,15 @@ public:
 };
 class AI: public Player{
   Node* lookAhead(Node* n, int steps,bool humanMove);
+  int nthAvailabe(int n);
   int randDrop();
   const int IQ;
   Node * decisionTree;
+  const bool moveFirst;
 public:
   void checkHuman();
   int makeMove(bool p1);
-  AI(Grid *g,int iq);
+  AI(Grid *g,int iq,bool mf);
   ~AI();
 };
 

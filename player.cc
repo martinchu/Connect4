@@ -10,6 +10,8 @@
 using namespace std;
 
 int ptest = 0;
+int lookAtest = 0;
+
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
 }
@@ -22,7 +24,7 @@ int Human::makeMove(bool p1){
     // bool checkInput = true;
     while(true){
       if(cin>>linenum){
-        if(linenum > 7 || linenum < 1)cout<<"Invalid Column. Please Choose Again";
+        if(linenum > Player::g->getcolSize() || linenum < 1)cout<<"Invalid Column. Please Choose Again";
         else break;
       }
       else{
@@ -37,11 +39,23 @@ int Human::makeMove(bool p1){
   }
   return 1;
 }
+
+int AI::nthAvailabe(int n){
+  int temp = n;
+  int i = 0;
+  while(i<=temp){
+    if(g->getColumnChecker(i)==g->getrowSize()){
+      temp++;
+    }
+      i++;
+  }
+  return temp;
+}
 Human::Human(Grid *grid){
   Player::g = grid;
 }
 
-AI::AI(Grid* grid,int iq):IQ(iq){
+AI::AI(Grid* grid,int iq, bool mf):IQ(iq),moveFirst(mf){
   Player::g = grid;
 }
 void AI::checkHuman(){
@@ -56,33 +70,31 @@ Node* AI::lookAhead(Node* n,int steps, bool humanMove){
   if(steps == 0) {
     return n;
   }
-  else{
+  else if(g->getWinner()=='F'){
     vector<Node *> tempc;
     for(int i=0; i< col;i++){
-      if(g->getColumnChecker(i)!=g->getrowSize()){
-        Grid * tempGrid = new Grid(*g);//call a copy constructor to make a duplicate grid
-        // drop a checker on column i of the temporary grid
-        tempGrid->dropChecker(i,humanMove);
-        if(ptest>=1000){
-          cout<<"g: "<<g<<endl<<"tempGrid: "<<tempGrid<<endl;
-          cout<<"g: "<<endl<<(*g)<<endl<<"tempGrid: "<<endl<<(*tempGrid)<<endl;
-        }
-        Node * tempNode = new Node(tempGrid);
+      Grid * tempGrid = new Grid(*g);
+      //call a copy constructor to make a duplicate grid
+      tempGrid->dropChecker(i,humanMove);
+      // drop a checker on column i of the temporary grid
+      Node * tempNode = new Node(tempGrid);
+      //make a new node
+      if(tempGrid->getColumnChecker(i)<tempGrid->getrowSize()){
         // Make a new children node with new/temporary grid
         tempNode = lookAhead(tempNode, steps-1,!humanMove);
         // Recurse
-        tempc.push_back(tempNode);
-        // push it to the vector
       }
       else if(ptest>=1000){
         cout <<"col "<<i<<" already full, unnecessary to generate corresponding states"<<endl;
       }
+      tempc.push_back(tempNode);
+      // push it to the vector
     }
     n->setChildren(tempc);
     // if(ptest>=1000)cout<<*n;
     return n;
   }
-  return 0;
+  return n;
 }
 
 int AI::randDrop(){
@@ -104,7 +116,7 @@ int AI::randDrop(){
 int AI::makeMove(bool p1){
   if(g->getCheckers()<2){
     int center = 3;
-    Player::g->dropChecker(center,false);
+    Player::g->dropChecker(center,moveFirst);
     return 1;
     // AI is always player 2 in this game, so p1 is always false
     // always take the center for the first move
@@ -115,16 +127,24 @@ int AI::makeMove(bool p1){
     if(ptest>=100)cout<<"looking "<<IQ<<" steps ahead"<<endl;
     Grid* temp = new Grid(*g);
     decisionTree = new Node(temp);
-    decisionTree = lookAhead(decisionTree,IQ,false);
-    //look certains steps ahead, depending on IQ of the AI
-    // next Step is an AI move
-    if(ptest>=10)cout<<"Lookahead done."<<*decisionTree<<endl;
+    if(decisionTree->findPotentialWin()!= -1){
+      // A win or a lose is imminent;
+      g->dropChecker(decisionTree->findPotentialWin(), false);
+      cout<<"AI drop a checker on column "<<decisionTree->findPotentialWin()+1<<endl;
+    }
+    else{
+      decisionTree = lookAhead(decisionTree,IQ,moveFirst);
+      //look certains steps ahead, depending on IQ of the AI
+      // next Step is an AI move
+      if(ptest>=10)cout<<"Lookahead done."<<*decisionTree<<endl;
+      decisionTree->alphabeta(INT_MIN,INT_MAX,true,IQ);
+      int choice = nthAvailabe(decisionTree->getRoute());
+      cout<<"AI drop a checker on column "<<choice+1<<endl;
+      if(choice < 0 || choice > g->getcolSize() )choice = randDrop();
+      Player::g->dropChecker(choice,false);
+    }
 
-    decisionTree->alphabeta(INT_MIN,INT_MAX,true,3);
-    int choice = decisionTree->getRoute();
-    if(ptest>=1)cout<<"Minimax & AlphaBeta done. choice: "<<choice<<endl;
-    if(choice ==-1)choice = randDrop();
-    Player::g->dropChecker(choice,false);
+
     // Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
     if(ptest>=100)cout<<"deleting future states now... "<<decisionTree<<endl;
     delete decisionTree;

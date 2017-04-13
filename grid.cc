@@ -119,7 +119,7 @@ ostream &operator<<(ostream &out, const Grid &g){
   }
   out<<*(g.td);
   if(gtest>=100){
-    cout<<"colcnt: 1 2 3 4 5 6 7"<<endl<<"        ";
+    cout<<"colcnt: ";    
     for(int i=0;i<g.colSize;i++){
       cout<<g.CheckersCounter[i]<<" ";
     }

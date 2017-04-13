@@ -14,13 +14,14 @@ class Node {
   vector<Node *> children;
   int heuristic();
   int evalBoard();
-  int findPotentialWin();
   int potential4();
   string id;
 public:
+  int findPotentialWin();
   Node(Grid *g);
   Node();
   Node(int n);
+  Node(Grid*g,int n);
   Node(vector<Node *>c);
   void setID(string s);
   int nextRowUp(int col);

@@ -60,15 +60,21 @@ int main(){
 	}
 	Human *h1 = new Human(g);
 	Human *h2 = new Human(g);
-	int intelligence = 4;
+	int intelligence = 6;
 	// determine how smart the AI will be.
-	AI *ai = new AI(g,intelligence);
+	bool aiMoveFirst = false;
+	// determine if AI will move first
+
+	AI *ai = new AI(g,intelligence,aiMoveFirst);
 	Player * p1 = h1;
 	Player * p2;
 	if (mode ==1) {
 		p2 = h2;
 	}
 	else{
+		// cout<<"AI Move First?(Y/N)";
+		// cin>>s;
+		// if(s =="Y"||s=="y") p1 = true;
 		p2 = ai;
 	}
 
