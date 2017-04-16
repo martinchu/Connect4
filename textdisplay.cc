@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 using namespace std;
-int ttest=0;
 const char TextDisplay::getCord(int r, int c){
 	return theDisplay[r][c];
 }
@@ -32,12 +31,7 @@ TextDisplay::TextDisplay(int r, int c):rowSize(r),colSize(c){
 	}
 }
 void TextDisplay::notify(int r, int c, char ch){
-	if(ttest>=10){
-		cout<<"ch: "<<ch<<endl;
-	}
 	theDisplay[r][c]=ch;
-	// colourCount[ch-'1']++;
-	// ^ this line is no longer useful. commented out at the moment
 }
 bool TextDisplay::isFilled(){
 	for(int i=0;i<colSize;i++){
@@ -49,7 +43,6 @@ char TextDisplay::getWinner(){
 	for(int i=0;i<rowSize;i++){
 		for(int j=0;j<colSize;j++){
 			if(theDisplay[i][j]!='0'){
-				if(ttest>=1)cout<<theDisplay[i][j]<<endl;
 				// Check for Horizontal
 				if(j <= colSize-4){//Check the left
 					if(theDisplay[i][j]==theDisplay[i][j+1]&&theDisplay[i][j]==theDisplay[i][j+2]&&theDisplay[i][j]==theDisplay[i][j+3]){
@@ -113,24 +106,10 @@ TextDisplay::~TextDisplay(){
 	// delete [] colourCount;
 }
 ostream &operator<<(ostream &out, const TextDisplay &td){
-	if(ttest>=10){
-		cout<<"in TextDisplay::<<"<<endl;
-		cout<<"rowSize: "<<td.rowSize<<endl;
-		cout<<"colSize: "<<td.colSize<<endl;
-		cout<<"td: "<<&td<<endl;
-		cout<<"td.theDisplay: "<<td.theDisplay<<endl;
-	}
 	cout<<"column: 1 2 3 4 5 6 7"<<endl<<endl;
 	for(int r=0;r<td.rowSize;r++){
 		out<<"        ";
-		if(ttest>=10){
-			cout<<"r: "<<r<<endl;
-			// cout<<"gridSize: "<<td.gridSize<<endl;
-		}
 		for(int c=0;c<td.colSize;c++){
-			if(ttest>=10){
-				cout<<"c: "<<c<<endl;
-			}
 			out<<td.theDisplay[r][c]<<" ";
 		}
 		out<<endl<<endl;

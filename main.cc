@@ -9,23 +9,16 @@
 #include "node.h"
 
 using namespace std;
-int moves=0;
-int mtest=0;
 int gsize=0;
-int memtest = 0;
 
 void setGrid(istream &in, Grid *g){
-	if(mtest>=50)cout<<"in setGridColor"<<endl;
 	int r,c, color;
 	while(in>>r){
-		if(mtest>=20)cout<<"about to get line"<<endl;
 		in>>c;
-		if(mtest>=20)cout<<"done(/skipped?) getline"<<endl;
 		if(r==-1&&c==-1)break;
 		in>>color;
 		if(r<gsize&&c<gsize)g->init(r,c,color);
 	}
-	if(mtest>=10)cout<<"about to output grid"<<endl;
 	cout<<(*g);
 }
 
@@ -72,19 +65,7 @@ int main(){
 		p2 = h2;
 	}
 	else{
-		// cout<<"AI Move First?(Y/N)";
-		// cin>>s;
-		// if(s =="Y"||s=="y") p1 = true;
 		p2 = ai;
-	}
-
-	if(mtest>=10000){
-		cout<<*g;
-		cout<<"going into while loop"<<endl;
-		cout<<"check Player 1: "<<endl;
-		p1->checkHuman();
-		cout<<"check Player 2: "<<endl;
-		p2->checkHuman();
 	}
 	// cout<<"Load Game?(Y/N)";
 	// cin>>s;
@@ -99,7 +80,6 @@ int main(){
 	cout<<(*g);
 	bool p1turn = true;
 	while(true){
-		if(mtest==1000)cout<<"g->getWinner(): "<<g->getWinner()<<endl;
 		if(g->getWinner()!='F'){
 			// Find Winner
 			cout<<"Player "<<g->getWinner()<<" wins!!!"<<endl;
@@ -119,7 +99,6 @@ int main(){
 			p1turn = !p1turn;
 		}
 	}
-	if(memtest>=100)cout<<"deleting grid"<<endl;
 	delete g;
 	delete h1;
 	delete h2;

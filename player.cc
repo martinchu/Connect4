@@ -9,8 +9,6 @@
 
 using namespace std;
 
-int ptest = 0;
-int lookAtest = 0;
 
 void Human::checkHuman(){
   cout<<"I am HUMAN!!"<<endl;
@@ -84,14 +82,10 @@ Node* AI::lookAhead(Node* n,int steps, bool humanMove){
         tempNode = lookAhead(tempNode, steps-1,!humanMove);
         // Recurse
       }
-      else if(ptest>=1000){
-        cout <<"col "<<i<<" already full, unnecessary to generate corresponding states"<<endl;
-      }
       tempc.push_back(tempNode);
       // push it to the vector
     }
     n->setChildren(tempc);
-    // if(ptest>=1000)cout<<*n;
     return n;
   }
   return n;
@@ -124,7 +118,6 @@ int AI::makeMove(bool p1){
   }
   else{
     cout<<"Calculating... Please Wait..."<<endl;
-    if(ptest>=100)cout<<"looking "<<IQ<<" steps ahead"<<endl;
     Grid* temp = new Grid(*g);
     decisionTree = new Node(temp);
     if(decisionTree->findPotentialWin()!= -1){
@@ -136,7 +129,6 @@ int AI::makeMove(bool p1){
       decisionTree = lookAhead(decisionTree,IQ,moveFirst);
       //look certains steps ahead, depending on IQ of the AI
       // next Step is an AI move
-      if(ptest>=10)cout<<"Lookahead done."<<*decisionTree<<endl;
       decisionTree->alphabeta(INT_MIN,INT_MAX,true,IQ);
       int choice = nthAvailabe(decisionTree->getRoute());
       cout<<"AI drop a checker on column "<<choice+1<<endl;
@@ -146,7 +138,6 @@ int AI::makeMove(bool p1){
 
 
     // Player::g->dropChecker(alphabeta(futureStates,INT_MIN,INT_MAX,true,3),false);
-    if(ptest>=100)cout<<"deleting future states now... "<<decisionTree<<endl;
     delete decisionTree;
     // deleting the futureStates;
     // Note: it might add time complexity, will figure out a way to keep some states
