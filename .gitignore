@@ -8,4 +8,7 @@
 *.so
 *.d
 c4
+*.out
+*.err
 test*^[.]
+archive

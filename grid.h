@@ -9,8 +9,8 @@
 class Grid {
   Cell **theGrid;                   // The actual n x n grid.
   int CheckersCounter[7];
-  int rowSize;
-  int colSize;                   // Size of the grid (n)
+  int numberOfRows;
+  int numberOfColumns;                   // Size of the grid (n)
   int checkers;
   TextDisplay *td;                  // The text display.
   Player* p1;
@@ -25,8 +25,8 @@ class Grid {
   char getWinner();
   TextDisplay * getTextDisplay();
   int dropChecker(int targetcol,bool player1);
-  int getrowSize();
-  int getcolSize();
+  int getNumberOfRows();
+  int getNumberOfColumns();
   int getCheckers();
   int getColumnChecker(int targetcol)const;
   void init();                 // Sets up an n x n grid.  Clears old grid, if necessary.

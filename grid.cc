@@ -5,8 +5,8 @@
 using namespace std;
 //Xwindow * theWindow;
 
-int Grid::getColumnChecker(int targetcol)const{
-  return CheckersCounter[targetcol];
+int Grid::getColumnChecker(int targetColumn)const{
+  return CheckersCounter[targetColumn];
 }
 void Grid::init(int r, int c, int state){
   theGrid[r][c].setState(state);
@@ -15,22 +15,22 @@ int Grid::getCheckers(){
   return checkers;
 }
 void Grid::clearGrid(){
-  for(int i=0;i<rowSize;i++){
+  for(int i=0;i<numberOfRows;i++){
     delete []theGrid[i];
   }
   delete []theGrid;
   delete td;
 }
-int Grid::getrowSize(){
-  return rowSize;
+int Grid::getNumberOfRows(){
+  return numberOfRows;
 }
-int Grid::getcolSize(){
-  return colSize;
+int Grid::getNumberOfColumns(){
+  return numberOfColumns;
 }
 TextDisplay* Grid::getTextDisplay(){
   return td;
 }
-Grid::Grid(int row, int col):theGrid(0),rowSize(row),colSize(col),checkers(0){}
+Grid::Grid(int row, int col):theGrid(0),numberOfRows(row),numberOfColumns(col),checkers(0){}
 Grid::~Grid(){
   this->clearGrid();
 }
@@ -41,15 +41,13 @@ char Grid::getWinner(){
   return td->TextDisplay::getWinner();
 }
 void Grid::init(){
-  int grow = rowSize;
-  int gcol = colSize;
-  theGrid=new Cell*[grow];
-  for(int q=0;q<grow;q++){
-    theGrid[q]=new Cell[gcol];
+  theGrid=new Cell*[numberOfRows];
+  for(int q=0;q<numberOfRows;q++){
+    theGrid[q]=new Cell[numberOfColumns];
   }
-  td= new TextDisplay(grow,gcol);
-  for(int col=0;col<gcol;col++){
-    for(int row=0;row<grow;row++){
+  td= new TextDisplay(numberOfRows,numberOfColumns);
+  for(int col=0;col<numberOfColumns;col++){
+    for(int row=0;row<numberOfRows;row++){
       theGrid[row][col].setDisplay(td);
       theGrid[row][col].setCoords(row,col);
     }
@@ -62,14 +60,14 @@ void Grid::change(const int & state){
   // theGrid[0][0].setState(state);
   theGrid[0][0].notify(state);
 }  // Notify Cell (0,0) of the change to new state: state
-int Grid::dropChecker(int targetcol,bool player1){
-  for(int i = rowSize-1; i>=0;i--){
-    if(theGrid[i][targetcol].getState()==0){
-      if(player1) theGrid[i][targetcol].notify(1);
-      else theGrid[i][targetcol].notify(2);
+int Grid::dropChecker(int targetColumn,bool player1){
+  for(int i = numberOfRows-1; i>=0;i--){
+    if(theGrid[i][targetColumn].getState()==0){
+      if(player1) theGrid[i][targetColumn].notify(1);
+      else theGrid[i][targetColumn].notify(2);
       checkers++;
       // moved = true;
-      CheckersCounter[targetcol]++;
+      CheckersCounter[targetColumn]++;
       return 1;
     }
   }
@@ -87,21 +85,21 @@ ostream &operator<<(ostream &out, const Grid &g){
 Grid::Grid(const Grid &g){
 
   // td = new TextDisplay(*g.td);
-  theGrid=new Cell*[g.rowSize];
-  for(int q=0;q<g.rowSize;q++){
-    theGrid[q]=new Cell[g.colSize];
+  theGrid=new Cell*[g.numberOfRows];
+  for(int q=0;q<g.numberOfRows;q++){
+    theGrid[q]=new Cell[g.numberOfColumns];
   }
-  td = new TextDisplay(g.rowSize,g.colSize);
-  for(int col=0;col<g.colSize;col++){
-    for(int row=0;row<g.rowSize;row++){
+  td = new TextDisplay(g.numberOfRows,g.numberOfColumns);
+  for(int col=0;col<g.numberOfColumns;col++){
+    for(int row=0;row<g.numberOfRows;row++){
       theGrid[row][col].setDisplay(td);
       theGrid[row][col].setCoords(row,col);
       theGrid[row][col].notify(g.theGrid[row][col].getState());
     }
     CheckersCounter[col] = g.getColumnChecker(col);
   }
-  rowSize = g.rowSize;
-  colSize = g.colSize;
+  numberOfRows = g.numberOfRows;
+  numberOfColumns = g.numberOfColumns;
   checkers = g.checkers;
   p1 = g.p1;
   p2 = g.p2;
